@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.9.0/default/snipcart.css" />
     <style>
         :root {
             --white: #ffffff;
@@ -35,7 +36,7 @@
             background: var(--bone);
             -webkit-font-smoothing: antialiased;
             text-rendering: optimizeLegibility;
-            overflow: hidden;
+            overflow-x: hidden;
             position: relative;
         }
 
@@ -89,6 +90,35 @@
             font-weight: 500;
         }
         .top-bar .gold-text { color: var(--gold); }
+        .cart-btn {
+            background: none;
+            border: 0;
+            font-family: var(--sans);
+            font-size: 10.5px;
+            letter-spacing: .32em;
+            text-transform: uppercase;
+            color: var(--grey-500);
+            font-weight: 500;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color .25s var(--ease);
+        }
+        .cart-btn:hover { color: var(--ink); }
+        .cart-count {
+            background: var(--gold);
+            color: var(--white);
+            min-width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 9px;
+            letter-spacing: 0;
+            padding: 0 5px;
+        }
 
         /* ===== MAIN ===== */
         main {
@@ -244,6 +274,225 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
+        /* ===== COLLECTION ===== */
+        .collection {
+            position: relative;
+            z-index: 2;
+            padding: 40px 48px 90px;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        .collection-head {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .collection-head h2 {
+            font-family: var(--serif);
+            font-weight: 300;
+            font-size: clamp(28px, 4vw, 48px);
+            letter-spacing: .02em;
+            color: var(--ink);
+        }
+        .collection-head .rule {
+            width: 60px;
+            height: 1px;
+            background: var(--gold);
+            margin: 18px auto 0;
+        }
+        .products {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 36px;
+        }
+        /* Wider row that fits 4 items at the same image size as the 3-up rows */
+        .collection.wide { max-width: 1580px; }
+        .collection.wide .products { grid-template-columns: repeat(4, 1fr); }
+        .product {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .product-img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            background: var(--white);
+            border: 1px solid var(--grey-100);
+        }
+        .thumbs {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            width: 100%;
+            margin-top: 8px;
+        }
+        .thumb {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            background: var(--white);
+            border: 1px solid var(--grey-100);
+            cursor: pointer;
+            opacity: .6;
+            transition: opacity .25s var(--ease), border-color .25s var(--ease);
+        }
+        .thumb:hover { opacity: 1; }
+        .thumb.active {
+            opacity: 1;
+            border-color: var(--gold);
+        }
+        .product-name {
+            font-family: var(--serif);
+            font-size: 22px;
+            font-weight: 400;
+            color: var(--ink);
+            margin-top: 20px;
+            letter-spacing: .01em;
+        }
+        .product-price {
+            font-size: 13px;
+            letter-spacing: .14em;
+            color: var(--grey-700);
+            margin-top: 6px;
+        }
+        .add-btn {
+            margin-top: 18px;
+            padding: 13px 32px;
+            background: var(--ink);
+            color: var(--white);
+            border: 1px solid var(--ink);
+            font-family: var(--sans);
+            font-size: 10.5px;
+            letter-spacing: .26em;
+            text-transform: uppercase;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background .3s var(--ease), color .3s var(--ease);
+        }
+        .add-btn:hover {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--white);
+        }
+
+        /* ===== SIZE MODAL ===== */
+        .size-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(28, 28, 27, .55);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity .3s var(--ease), visibility .3s var(--ease);
+        }
+        .size-overlay.open { opacity: 1; visibility: visible; }
+        .size-modal {
+            background: var(--bone);
+            width: min(420px, 100%);
+            padding: 40px 36px 36px;
+            text-align: center;
+            position: relative;
+            transform: translateY(14px);
+            transition: transform .35s var(--ease);
+            box-shadow: 0 30px 80px rgba(0,0,0,.25);
+        }
+        .size-overlay.open .size-modal { transform: translateY(0); }
+        .size-modal .close {
+            position: absolute;
+            top: 14px;
+            right: 18px;
+            background: none;
+            border: 0;
+            font-size: 22px;
+            line-height: 1;
+            color: var(--grey-500);
+            cursor: pointer;
+            transition: color .25s var(--ease);
+        }
+        .size-modal .close:hover { color: var(--ink); }
+        .size-modal .eyebrow {
+            font-size: 10px;
+            letter-spacing: .35em;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 500;
+        }
+        .size-modal h3 {
+            font-family: var(--serif);
+            font-weight: 300;
+            font-size: 28px;
+            color: var(--ink);
+            margin-top: 8px;
+        }
+        .size-modal .prompt {
+            font-size: 11px;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            color: var(--grey-500);
+            margin: 22px 0 16px;
+        }
+        .size-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 8px;
+        }
+        .size-grid button {
+            padding: 14px 0;
+            background: var(--white);
+            border: 1px solid var(--grey-300);
+            font-family: var(--sans);
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: .06em;
+            color: var(--ink);
+            cursor: pointer;
+            transition: all .25s var(--ease);
+        }
+        .size-grid button:hover {
+            background: var(--ink);
+            color: var(--white);
+            border-color: var(--ink);
+        }
+        .size-grid button.selected {
+            background: var(--gold);
+            color: var(--white);
+            border-color: var(--gold);
+        }
+        .size-confirm {
+            margin-top: 22px;
+            width: 100%;
+            padding: 15px 0;
+            background: var(--ink);
+            color: var(--white);
+            border: 1px solid var(--ink);
+            font-family: var(--sans);
+            font-size: 10.5px;
+            letter-spacing: .26em;
+            text-transform: uppercase;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background .3s var(--ease), border-color .3s var(--ease), opacity .3s var(--ease);
+        }
+        .size-confirm:hover:not(:disabled) {
+            background: var(--gold);
+            border-color: var(--gold);
+        }
+        .size-confirm:disabled {
+            opacity: .35;
+            cursor: not-allowed;
+        }
+        @media (max-width: 420px) {
+            .size-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+
         /* ===== RESPONSIVE ===== */
         @media (max-width: 640px) {
             body { overflow-y: auto; }
@@ -254,6 +503,61 @@
                 text-align: center;
             }
             .logo-wrap img { width: 160px; }
+            .collection { padding: 20px 22px 70px; }
+            .products { grid-template-columns: 1fr; gap: 44px; }
+            .collection.wide .products { grid-template-columns: 1fr; }
+        }
+
+        @media (min-width: 641px) and (max-width: 1100px) {
+            .collection.wide .products { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (min-width: 641px) and (max-width: 880px) {
+            .product-name { font-size: 18px; }
+            .add-btn { padding: 12px 20px; letter-spacing: .18em; }
+        }
+
+        /* ===== SNIPCART CART — CHOC THEME ===== */
+        #snipcart {
+            /* Brand palette mapped onto Snipcart's design tokens */
+            --bgColor-default: #f7f5f1;          /* bone */
+            --bgColor-alt: #ffffff;
+            --color-default: #1c1c1b;            /* ink */
+            --color-alt: #4a4a48;                /* grey-700 */
+            --color-icon: #b8965a;               /* gold */
+            --color-link: #b8965a;               /* gold */
+            --color-link-hover: #8e6f3d;
+
+            --borderColor-default: #e3e3e1;      /* grey-100 */
+            --borderColor-alt: #b8b8b6;          /* grey-300 */
+
+            /* Primary buttons (checkout / continue) */
+            --color-buttonPrimary: #ffffff;
+            --bgColor-buttonPrimary: #b8965a;            /* gold */
+            --bgColor-buttonPrimary-hover: #8e6f3d;
+            --color-buttonPrimary-hover: #ffffff;
+
+            /* Secondary buttons */
+            --color-buttonSecondary: #1c1c1b;
+            --bgColor-buttonSecondary: transparent;
+            --borderColor-buttonSecondary: #1c1c1b;
+
+            --color-inputLabel: #7a7a78;         /* grey-500 */
+            --bgColor-input: #ffffff;
+            --color-input: #1c1c1b;
+
+            --color-success: #b8965a;
+            --bgColor-badge: #b8965a;            /* gold count badge */
+
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        /* Headings inside the cart use the brand serif */
+        #snipcart .snipcart-modal__header-title,
+        #snipcart .snipcart-cart-header__title,
+        #snipcart h1, #snipcart h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            letter-spacing: .02em;
         }
     </style>
 </head>
@@ -264,7 +568,9 @@
     <!-- ===== TOP BAR ===== -->
     <div class="top-bar">
         <span>Est. <span class="gold-text">MMXXVI</span></span>
-        <span>Chartered House of Change</span>
+        <button class="cart-btn snipcart-checkout" aria-label="Open cart">
+            Cart <span class="snipcart-items-count cart-count">0</span>
+        </button>
     </div>
 
     <!-- ===== MAIN ===== -->
@@ -283,12 +589,333 @@
             Chartered House <span class="italic">of</span> Change
         </h1>
 
-        <div class="coming-soon-block">
-            <p class="coming-soon">
-                Big things are coming soon<span class="accent">...</span>
-            </p>
-        </div>
     </main>
+
+    <!-- ===== TENNIS COURT COLLECTION ===== -->
+    <section class="collection">
+        <div class="collection-head">
+            <h2>The Tennis Court Collection</h2>
+            <div class="rule"></div>
+        </div>
+
+        <div class="products">
+            <!-- Hard Court Tee -->
+            <div class="product">
+                <img class="product-img" src="Mockups/Hard tee/unisex-classic-tee-white-back-6a42d1cbede7c.png" alt="Hard Court Tee" />
+                <div class="thumbs">
+                    <img class="thumb" src="Mockups/Hard tee/unisex-classic-tee-white-front-6a42d1cbee6f5.png" alt="Hard Court Tee front" />
+                    <img class="thumb active" src="Mockups/Hard tee/unisex-classic-tee-white-back-6a42d1cbede7c.png" alt="Hard Court Tee back" />
+                    <img class="thumb" src="Mockups/Hard tee/unisex-classic-tee-white-left-6a42d1cbee526.png" alt="Hard Court Tee left" />
+                    <img class="thumb" src="Mockups/Hard tee/unisex-classic-tee-white-right-6a42d1cbee331.png" alt="Hard Court Tee right" />
+                </div>
+                <h3 class="product-name">Hard Court Tee</h3>
+                <p class="product-price">£25.00</p>
+                <button class="add-btn snipcart-add-item"
+                    data-item-id="hard-court-tee"
+                    data-item-name="Hard Court Tee"
+                    data-item-price="25.00"
+                    data-item-url="https://chocstudio.com/"
+                    data-item-image="Mockups/Hard tee/unisex-classic-tee-white-front-6a42d1cbee6f5.png"
+                    data-item-description="The Tennis Court Collection — Hard Court Tee">
+                    Add to Cart
+                </button>
+            </div>
+
+            <!-- Grass Court Tee -->
+            <div class="product">
+                <img class="product-img" src="Mockups/Grass tee/unisex-classic-tee-white-back-6a42d0e8c1ee1.png" alt="Grass Court Tee" />
+                <div class="thumbs">
+                    <img class="thumb" src="Mockups/Grass tee/unisex-classic-tee-white-front-6a42d0e8c268a.png" alt="Grass Court Tee front" />
+                    <img class="thumb active" src="Mockups/Grass tee/unisex-classic-tee-white-back-6a42d0e8c1ee1.png" alt="Grass Court Tee back" />
+                    <img class="thumb" src="Mockups/Grass tee/unisex-classic-tee-white-left-6a42d0e8c24c8.png" alt="Grass Court Tee left" />
+                    <img class="thumb" src="Mockups/Grass tee/unisex-classic-tee-white-right-6a42d0e8c22f9.png" alt="Grass Court Tee right" />
+                </div>
+                <h3 class="product-name">Grass Court Tee</h3>
+                <p class="product-price">£25.00</p>
+                <button class="add-btn snipcart-add-item"
+                    data-item-id="grass-court-tee"
+                    data-item-name="Grass Court Tee"
+                    data-item-price="25.00"
+                    data-item-url="https://chocstudio.com/"
+                    data-item-image="Mockups/Grass tee/unisex-classic-tee-white-front-6a42d0e8c268a.png"
+                    data-item-description="The Tennis Court Collection — Grass Court Tee">
+                    Add to Cart
+                </button>
+            </div>
+
+            <!-- Clay Court Tee -->
+            <div class="product">
+                <img class="product-img" src="Mockups/Clay tee/unisex-classic-tee-white-back-6a42d16e72ed7.png" alt="Clay Court Tee" />
+                <div class="thumbs">
+                    <img class="thumb" src="Mockups/Clay tee/unisex-classic-tee-white-front-6a42d16e734e3.png" alt="Clay Court Tee front" />
+                    <img class="thumb active" src="Mockups/Clay tee/unisex-classic-tee-white-back-6a42d16e72ed7.png" alt="Clay Court Tee back" />
+                    <img class="thumb" src="Mockups/Clay tee/unisex-classic-tee-white-left-6a42d16e7334a.png" alt="Clay Court Tee left" />
+                    <img class="thumb" src="Mockups/Clay tee/unisex-classic-tee-white-right-6a42d16e73190.png" alt="Clay Court Tee right" />
+                </div>
+                <h3 class="product-name">Clay Court Tee</h3>
+                <p class="product-price">£25.00</p>
+                <button class="add-btn snipcart-add-item"
+                    data-item-id="clay-court-tee"
+                    data-item-name="Clay Court Tee"
+                    data-item-price="25.00"
+                    data-item-url="https://chocstudio.com/"
+                    data-item-image="Mockups/Clay tee/unisex-classic-tee-white-front-6a42d16e734e3.png"
+                    data-item-description="The Tennis Court Collection — Clay Court Tee">
+                    Add to Cart
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ITALIAN OUTREACH COLLECTION ===== -->
+    <section class="collection">
+        <div class="collection-head">
+            <h2>The Italian Outreach Collection</h2>
+            <div class="rule"></div>
+        </div>
+
+        <div class="products">
+            <!-- Siena Outreach Hoodie -->
+            <div class="product">
+                <img class="product-img" src="Mockups/Siena Outreach Hoodie/unisex-premium-pullover-hoodie-maroon-back-6a42d50218408.png" alt="Siena Outreach Hoodie" />
+                <div class="thumbs">
+                    <img class="thumb" src="Mockups/Siena Outreach Hoodie/unisex-premium-pullover-hoodie-maroon-front-6a42d50217d26.png" alt="Siena Outreach Hoodie front" />
+                    <img class="thumb active" src="Mockups/Siena Outreach Hoodie/unisex-premium-pullover-hoodie-maroon-back-6a42d50218408.png" alt="Siena Outreach Hoodie back" />
+                    <img class="thumb" src="Mockups/Siena Outreach Hoodie/unisex-premium-pullover-hoodie-maroon-left-6a42d5021885b.png" alt="Siena Outreach Hoodie left" />
+                    <img class="thumb" src="Mockups/Siena Outreach Hoodie/unisex-premium-pullover-hoodie-maroon-right-6a42d50218cd3.png" alt="Siena Outreach Hoodie right" />
+                </div>
+                <h3 class="product-name">Siena Outreach Hoodie</h3>
+                <p class="product-price">£50.00</p>
+                <button class="add-btn snipcart-add-item"
+                    data-item-id="siena-outreach-hoodie"
+                    data-item-name="Siena Outreach Hoodie"
+                    data-item-price="50.00"
+                    data-item-url="https://chocstudio.com/"
+                    data-item-image="Mockups/Siena Outreach Hoodie/unisex-premium-pullover-hoodie-maroon-front-6a42d50217d26.png"
+                    data-item-description="Italian Outreach Collection — Siena Outreach Hoodie">
+                    Add to Cart
+                </button>
+            </div>
+
+            <!-- Florence Outreach Hoodie -->
+            <div class="product">
+                <img class="product-img" src="Mockups/Florence Outreach Hoodie/unisex-premium-pullover-hoodie-team-royal-front-6a42d55041389.png" alt="Florence Outreach Hoodie" />
+                <div class="thumbs">
+                    <img class="thumb active" src="Mockups/Florence Outreach Hoodie/unisex-premium-pullover-hoodie-team-royal-front-6a42d55041389.png" alt="Florence Outreach Hoodie front" />
+                    <img class="thumb" src="Mockups/Florence Outreach Hoodie/unisex-premium-pullover-hoodie-team-royal-back-6a42d55041741.png" alt="Florence Outreach Hoodie back" />
+                    <img class="thumb" src="Mockups/Florence Outreach Hoodie/unisex-premium-pullover-hoodie-team-royal-left-6a42d55041967.png" alt="Florence Outreach Hoodie left" />
+                    <img class="thumb" src="Mockups/Florence Outreach Hoodie/unisex-premium-pullover-hoodie-team-royal-right-6a42d55041ba0.png" alt="Florence Outreach Hoodie right" />
+                </div>
+                <h3 class="product-name">Florence Outreach Hoodie</h3>
+                <p class="product-price">£50.00</p>
+                <button class="add-btn snipcart-add-item"
+                    data-item-id="florence-outreach-hoodie"
+                    data-item-name="Florence Outreach Hoodie"
+                    data-item-price="50.00"
+                    data-item-url="https://chocstudio.com/"
+                    data-item-image="Mockups/Florence Outreach Hoodie/unisex-premium-pullover-hoodie-team-royal-front-6a42d55041389.png"
+                    data-item-description="Italian Outreach Collection — Florence Outreach Hoodie">
+                    Add to Cart
+                </button>
+            </div>
+
+            <!-- Venice Outreach Hoodie -->
+            <div class="product">
+                <img class="product-img" src="Mockups/Venice Outreach Hoodie/unisex-premium-pullover-hoodie-forest-green-back-6a42d58616e4a.png" alt="Venice Outreach Hoodie" />
+                <div class="thumbs">
+                    <img class="thumb" src="Mockups/Venice Outreach Hoodie/unisex-premium-pullover-hoodie-forest-green-front-6a42d58616c26.png" alt="Venice Outreach Hoodie front" />
+                    <img class="thumb active" src="Mockups/Venice Outreach Hoodie/unisex-premium-pullover-hoodie-forest-green-back-6a42d58616e4a.png" alt="Venice Outreach Hoodie back" />
+                    <img class="thumb" src="Mockups/Venice Outreach Hoodie/unisex-premium-pullover-hoodie-forest-green-left-6a42d5861707a.png" alt="Venice Outreach Hoodie left" />
+                    <img class="thumb" src="Mockups/Venice Outreach Hoodie/unisex-premium-pullover-hoodie-forest-green-right-6a42d586172b4.png" alt="Venice Outreach Hoodie right" />
+                </div>
+                <h3 class="product-name">Venice Outreach Hoodie</h3>
+                <p class="product-price">£50.00</p>
+                <button class="add-btn snipcart-add-item"
+                    data-item-id="venice-outreach-hoodie"
+                    data-item-name="Venice Outreach Hoodie"
+                    data-item-price="50.00"
+                    data-item-url="https://chocstudio.com/"
+                    data-item-image="Mockups/Venice Outreach Hoodie/unisex-premium-pullover-hoodie-forest-green-front-6a42d58616c26.png"
+                    data-item-description="Italian Outreach Collection — Venice Outreach Hoodie">
+                    Add to Cart
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== COORDINATES COLLECTION — ST. TROPEZ ===== -->
+    <section class="collection">
+        <div class="collection-head">
+            <h2>The Coordinates Collection — St. Tropez</h2>
+            <div class="rule"></div>
+        </div>
+
+        <div class="products">
+            <!-- St Tropez Tee (White) -->
+            <div class="product">
+                <img class="product-img" src="Mockups/St Tropez tee white/unisex-classic-tee-white-front-6a440faade0b9.png" alt="St Tropez Tee White" />
+                <div class="thumbs">
+                    <img class="thumb active" src="Mockups/St Tropez tee white/unisex-classic-tee-white-front-6a440faade0b9.png" alt="St Tropez Tee White front" />
+                    <img class="thumb" src="Mockups/St Tropez tee white/unisex-classic-tee-white-back-6a440faadd885.png" alt="St Tropez Tee White back" />
+                    <img class="thumb" src="Mockups/St Tropez tee white/unisex-classic-tee-white-left-6a440faadde71.png" alt="St Tropez Tee White left" />
+                    <img class="thumb" src="Mockups/St Tropez tee white/unisex-classic-tee-white-right-6a440faaddc09.png" alt="St Tropez Tee White right" />
+                </div>
+                <h3 class="product-name">St Tropez Tee — White</h3>
+                <p class="product-price">£25.00</p>
+                <button class="add-btn snipcart-add-item"
+                    data-item-id="st-tropez-tee-white"
+                    data-item-name="St Tropez Tee — White"
+                    data-item-price="25.00"
+                    data-item-url="https://chocstudio.com/"
+                    data-item-image="Mockups/St Tropez tee white/unisex-classic-tee-white-front-6a440faade0b9.png"
+                    data-item-description="Coordinates Collection — St. Tropez Tee (White)">
+                    Add to Cart
+                </button>
+            </div>
+
+            <!-- St Tropez Tee (Black) -->
+            <div class="product">
+                <img class="product-img" src="Mockups/St Tropez tee black/unisex-classic-tee-black-front-6a42d2b5bfaa5.png" alt="St Tropez Tee Black" />
+                <div class="thumbs">
+                    <img class="thumb active" src="Mockups/St Tropez tee black/unisex-classic-tee-black-front-6a42d2b5bfaa5.png" alt="St Tropez Tee Black front" />
+                    <img class="thumb" src="Mockups/St Tropez tee black/unisex-classic-tee-black-back-6a42d2b5bec71.png" alt="St Tropez Tee Black back" />
+                    <img class="thumb" src="Mockups/St Tropez tee black/unisex-classic-tee-black-left-6a42d2b5bf609.png" alt="St Tropez Tee Black left" />
+                    <img class="thumb" src="Mockups/St Tropez tee black/unisex-classic-tee-black-right-6a42d2b5bf166.png" alt="St Tropez Tee Black right" />
+                </div>
+                <h3 class="product-name">St Tropez Tee — Black</h3>
+                <p class="product-price">£25.00</p>
+                <button class="add-btn snipcart-add-item"
+                    data-item-id="st-tropez-tee-black"
+                    data-item-name="St Tropez Tee — Black"
+                    data-item-price="25.00"
+                    data-item-url="https://chocstudio.com/"
+                    data-item-image="Mockups/St Tropez tee black/unisex-classic-tee-black-front-6a42d2b5bfaa5.png"
+                    data-item-description="Coordinates Collection — St. Tropez Tee (Black)">
+                    Add to Cart
+                </button>
+            </div>
+
+            <!-- St Tropez Hoodie -->
+            <div class="product">
+                <img class="product-img" src="Mockups/St Tropez hoodie/unisex-essential-eco-cruiser-2.0-hoodie-black-back-6a42d25f1e332.png" alt="St Tropez Hoodie" />
+                <div class="thumbs">
+                    <img class="thumb" src="Mockups/St Tropez hoodie/unisex-essential-eco-cruiser-2.0-hoodie-black-front-6a42d25f1e100.png" alt="St Tropez Hoodie front" />
+                    <img class="thumb active" src="Mockups/St Tropez hoodie/unisex-essential-eco-cruiser-2.0-hoodie-black-back-6a42d25f1e332.png" alt="St Tropez Hoodie back" />
+                    <img class="thumb" src="Mockups/St Tropez hoodie/unisex-essential-eco-cruiser-2.0-hoodie-black-left-6a42d25f1e50e.png" alt="St Tropez Hoodie left" />
+                    <img class="thumb" src="Mockups/St Tropez hoodie/unisex-essential-eco-cruiser-2.0-hoodie-black-right-6a42d25f1e6b1.png" alt="St Tropez Hoodie right" />
+                </div>
+                <h3 class="product-name">St Tropez Hoodie</h3>
+                <p class="product-price">£50.00</p>
+                <button class="add-btn snipcart-add-item"
+                    data-item-id="st-tropez-hoodie"
+                    data-item-name="St Tropez Hoodie"
+                    data-item-price="50.00"
+                    data-item-url="https://chocstudio.com/"
+                    data-item-image="Mockups/St Tropez hoodie/unisex-essential-eco-cruiser-2.0-hoodie-black-front-6a42d25f1e100.png"
+                    data-item-description="Coordinates Collection — St. Tropez Hoodie">
+                    Add to Cart
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CLASSIC COLLECTION ===== -->
+    <section class="collection wide">
+        <div class="collection-head">
+            <h2>The Classic Collection</h2>
+            <div class="rule"></div>
+        </div>
+
+        <div class="products">
+            <!-- Classic Tee White -->
+            <div class="product">
+                <img class="product-img" src="Mockups/Classic tee White/unisex-classic-tee-white-front-6a42d4ac8721e.png" alt="Classic Tee White" />
+                <div class="thumbs">
+                    <img class="thumb active" src="Mockups/Classic tee White/unisex-classic-tee-white-front-6a42d4ac8721e.png" alt="Classic Tee White front" />
+                    <img class="thumb" src="Mockups/Classic tee White/unisex-classic-tee-white-back-6a42d4ac869c3.png" alt="Classic Tee White back" />
+                    <img class="thumb" src="Mockups/Classic tee White/unisex-classic-tee-white-left-6a42d4ac86fe9.png" alt="Classic Tee White left" />
+                    <img class="thumb" src="Mockups/Classic tee White/unisex-classic-tee-white-right-6a42d4ac86d7a.png" alt="Classic Tee White right" />
+                </div>
+                <h3 class="product-name">Classic Tee — White</h3>
+                <p class="product-price">£25.00</p>
+                <button class="add-btn snipcart-add-item"
+                    data-item-id="classic-tee-white"
+                    data-item-name="Classic Tee — White"
+                    data-item-price="25.00"
+                    data-item-url="https://chocstudio.com/"
+                    data-item-image="Mockups/Classic tee White/unisex-classic-tee-white-front-6a42d4ac8721e.png"
+                    data-item-description="Classic Collection — Classic Tee (White)">
+                    Add to Cart
+                </button>
+            </div>
+
+            <!-- Classic Tee Black -->
+            <div class="product">
+                <img class="product-img" src="Mockups/Classic tee Black/unisex-classic-tee-black-front-6a42d45a8c902.png" alt="Classic Tee Black" />
+                <div class="thumbs">
+                    <img class="thumb active" src="Mockups/Classic tee Black/unisex-classic-tee-black-front-6a42d45a8c902.png" alt="Classic Tee Black front" />
+                    <img class="thumb" src="Mockups/Classic tee Black/unisex-classic-tee-black-back-6a42d45a8c185.png" alt="Classic Tee Black back" />
+                    <img class="thumb" src="Mockups/Classic tee Black/unisex-classic-tee-black-left-6a42d45a8c758.png" alt="Classic Tee Black left" />
+                    <img class="thumb" src="Mockups/Classic tee Black/unisex-classic-tee-black-right-6a42d45a8c584.png" alt="Classic Tee Black right" />
+                </div>
+                <h3 class="product-name">Classic Tee — Black</h3>
+                <p class="product-price">£25.00</p>
+                <button class="add-btn snipcart-add-item"
+                    data-item-id="classic-tee-black"
+                    data-item-name="Classic Tee — Black"
+                    data-item-price="25.00"
+                    data-item-url="https://chocstudio.com/"
+                    data-item-image="Mockups/Classic tee Black/unisex-classic-tee-black-front-6a42d45a8c902.png"
+                    data-item-description="Classic Collection — Classic Tee (Black)">
+                    Add to Cart
+                </button>
+            </div>
+
+            <!-- Classic Polo White -->
+            <div class="product">
+                <img class="product-img" src="Mockups/Classic Polo White/unisex-premium-pique-polo-shirt-white-front-6a42d4097ab16.png" alt="Classic Polo White" />
+                <div class="thumbs">
+                    <img class="thumb active" src="Mockups/Classic Polo White/unisex-premium-pique-polo-shirt-white-front-6a42d4097ab16.png" alt="Classic Polo White front" />
+                    <img class="thumb" src="Mockups/Classic Polo White/unisex-premium-pique-polo-shirt-white-back-6a42d4097b974.png" alt="Classic Polo White back" />
+                    <img class="thumb" src="Mockups/Classic Polo White/unisex-premium-pique-polo-shirt-white-left-6a42d4097be1a.png" alt="Classic Polo White left" />
+                    <img class="thumb" src="Mockups/Classic Polo White/unisex-premium-pique-polo-shirt-white-right-6a42d4097c262.png" alt="Classic Polo White right" />
+                </div>
+                <h3 class="product-name">Classic Polo — White</h3>
+                <p class="product-price">£30.00</p>
+                <button class="add-btn snipcart-add-item"
+                    data-item-id="classic-polo-white"
+                    data-item-name="Classic Polo — White"
+                    data-item-price="30.00"
+                    data-item-url="https://chocstudio.com/"
+                    data-item-image="Mockups/Classic Polo White/unisex-premium-pique-polo-shirt-white-front-6a42d4097ab16.png"
+                    data-item-description="Classic Collection — Classic Polo (White)">
+                    Add to Cart
+                </button>
+            </div>
+
+            <!-- Classic Polo Black -->
+            <div class="product">
+                <img class="product-img" src="Mockups/Classic Polo Black/unisex-premium-pique-polo-shirt-black-front-6a42d3b40fd0f.png" alt="Classic Polo Black" />
+                <div class="thumbs">
+                    <img class="thumb active" src="Mockups/Classic Polo Black/unisex-premium-pique-polo-shirt-black-front-6a42d3b40fd0f.png" alt="Classic Polo Black front" />
+                    <img class="thumb" src="Mockups/Classic Polo Black/unisex-premium-pique-polo-shirt-black-back-6a42d3b410bc9.png" alt="Classic Polo Black back" />
+                    <img class="thumb" src="Mockups/Classic Polo Black/unisex-premium-pique-polo-shirt-black-left-6a42d3b41106b.png" alt="Classic Polo Black left" />
+                    <img class="thumb" src="Mockups/Classic Polo Black/unisex-premium-pique-polo-shirt-black-right-6a42d3b4114f7.png" alt="Classic Polo Black right" />
+                </div>
+                <h3 class="product-name">Classic Polo — Black</h3>
+                <p class="product-price">£30.00</p>
+                <button class="add-btn snipcart-add-item"
+                    data-item-id="classic-polo-black"
+                    data-item-name="Classic Polo — Black"
+                    data-item-price="30.00"
+                    data-item-url="https://chocstudio.com/"
+                    data-item-image="Mockups/Classic Polo Black/unisex-premium-pique-polo-shirt-black-front-6a42d3b40fd0f.png"
+                    data-item-description="Classic Collection — Classic Polo (Black)">
+                    Add to Cart
+                </button>
+            </div>
+        </div>
+    </section>
 
     <!-- ===== FOOTER ===== -->
     <footer>
@@ -299,6 +926,126 @@
     </footer>
 
 </div>
+
+<!-- ===== SIZE PICKER MODAL ===== -->
+<div class="size-overlay" id="sizeOverlay">
+    <div class="size-modal">
+        <button class="close" id="sizeClose" aria-label="Close">&times;</button>
+        <p class="eyebrow">Select</p>
+        <h3 id="sizeProductName">Choose a Size</h3>
+        <p class="prompt">Choose a size</p>
+        <div class="size-grid">
+            <button data-size="S">S</button>
+            <button data-size="M">M</button>
+            <button data-size="L">L</button>
+            <button data-size="XL">XL</button>
+            <button data-size="2XL">2XL</button>
+        </div>
+        <button class="size-confirm" id="sizeConfirm" disabled>Confirm</button>
+    </div>
+</div>
+
+<script>
+    // Thumbnail gallery swap
+    document.querySelectorAll('.product').forEach(function (product) {
+        var main = product.querySelector('.product-img');
+        product.querySelectorAll('.thumb').forEach(function (thumb) {
+            thumb.addEventListener('click', function () {
+                main.src = thumb.src;
+                product.querySelectorAll('.thumb').forEach(function (t) { t.classList.remove('active'); });
+                thumb.classList.add('active');
+            });
+        });
+    });
+
+    // Size picker: every "Add to Cart" opens the size modal first,
+    // then adds to Snipcart with the chosen size as a custom field.
+    (function () {
+        var overlay = document.getElementById('sizeOverlay');
+        var nameEl = document.getElementById('sizeProductName');
+        var closeBtn = document.getElementById('sizeClose');
+        var confirmBtn = document.getElementById('sizeConfirm');
+        var sizeButtons = document.querySelectorAll('.size-grid button');
+        var activeBtn = null;
+        var chosenSize = null;
+
+        // Remove Snipcart's auto-trigger class and define the Size custom field
+        // on each button so Snipcart validates it, but only fires when WE click it.
+        document.querySelectorAll('.add-btn').forEach(function (btn) {
+            btn.classList.remove('snipcart-add-item');
+            btn.setAttribute('data-item-custom1-name', 'Size');
+            btn.setAttribute('data-item-custom1-options', 'S|M|L|XL|2XL');
+            btn.addEventListener('click', function (e) {
+                if (btn.dataset.sizeChosen === '1') { return; } // let Snipcart handle this click
+                e.preventDefault();
+                openModal(btn);
+            });
+        });
+
+        function openModal(btn) {
+            activeBtn = btn;
+            chosenSize = null;
+            sizeButtons.forEach(function (b) { b.classList.remove('selected'); });
+            confirmBtn.disabled = true;
+            nameEl.textContent = btn.getAttribute('data-item-name') || 'Choose a Size';
+            overlay.classList.add('open');
+        }
+        function closeModal() {
+            overlay.classList.remove('open');
+            activeBtn = null;
+            chosenSize = null;
+        }
+
+        // Step 1: pick a size (just highlights it, enables Confirm)
+        sizeButtons.forEach(function (sizeBtn) {
+            sizeBtn.addEventListener('click', function () {
+                chosenSize = sizeBtn.getAttribute('data-size');
+                sizeButtons.forEach(function (b) { b.classList.remove('selected'); });
+                sizeBtn.classList.add('selected');
+                confirmBtn.disabled = false;
+            });
+        });
+
+        // Step 2: confirm adds to Snipcart cart, then closes so they can keep shopping
+        confirmBtn.addEventListener('click', function () {
+            if (!activeBtn || !chosenSize) return;
+            var btn = activeBtn;
+            var size = chosenSize;
+
+            btn.setAttribute('data-item-custom1-value', size);
+            btn.classList.add('snipcart-add-item');
+            btn.dataset.sizeChosen = '1';
+            closeModal();
+
+            // Let Snipcart's delegated handler pick this up, then detach again
+            btn.click();
+            setTimeout(function () {
+                btn.classList.remove('snipcart-add-item');
+                delete btn.dataset.sizeChosen;
+            }, 0);
+        });
+
+        closeBtn.addEventListener('click', closeModal);
+        overlay.addEventListener('click', function (e) {
+            if (e.target === overlay) closeModal();
+        });
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') closeModal();
+        });
+    })();
+</script>
+
+<script>
+    window.SnipcartSettings = {
+        publicApiKey: 'NmU2M2ExZDctOTg1Mi00YWY4LTkyYjQtZDk2NzEwYTc1MDJjNjM5MTgzMTc4NzkzNzg2MjI5',
+        currency: 'gbp',
+        loadStrategy: 'on-user-interaction'
+    };
+</script>
+<script async src="https://cdn.snipcart.com/themes/v3.9.0/default/snipcart.js"></script>
+<div hidden id="snipcart"
+    data-api-key="NmU2M2ExZDctOTg1Mi00YWY4LTkyYjQtZDk2NzEwYTc1MDJjNjM5MTgzMTc4NzkzNzg2MjI5"
+    data-currency="gbp"></div>
 
 </body>
 </html>

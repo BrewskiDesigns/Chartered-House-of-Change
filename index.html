@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chartered House of Change — Coming Soon</title>
-    <meta name="description" content="Chartered House of Change — Products coming soon." />
+    <title>Chartered House of Change</title>
+    <meta name="description" content="Chartered House of Change — Shop the collections." />
     <link rel="icon" type="image/png" href="CHOC logo.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -517,6 +517,51 @@
             .add-btn { padding: 12px 20px; letter-spacing: .18em; }
         }
 
+        /* ===== IMAGE LIGHTBOX ===== */
+        .product-img { cursor: zoom-in; }
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(28, 28, 27, .82);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            z-index: 1100;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity .3s var(--ease), visibility .3s var(--ease);
+        }
+        .lightbox.open { opacity: 1; visibility: visible; }
+        .lightbox img {
+            max-width: min(90vw, 900px);
+            max-height: 90vh;
+            object-fit: contain;
+            background: var(--white);
+            transform: scale(.96);
+            transition: transform .35s var(--ease);
+            box-shadow: 0 30px 90px rgba(0,0,0,.5);
+        }
+        .lightbox.open img { transform: scale(1); }
+        .lightbox-close {
+            position: fixed;
+            top: 24px;
+            right: 30px;
+            width: 44px;
+            height: 44px;
+            background: none;
+            border: 0;
+            color: var(--white);
+            font-size: 34px;
+            line-height: 1;
+            cursor: pointer;
+            opacity: .8;
+            transition: opacity .25s var(--ease), color .25s var(--ease);
+        }
+        .lightbox-close:hover { opacity: 1; color: var(--gold-light); }
+
         /* ===== SNIPCART CART — CHOC THEME ===== */
         #snipcart {
             /* Brand palette mapped onto Snipcart's design tokens */
@@ -927,6 +972,12 @@
 
 </div>
 
+<!-- ===== IMAGE LIGHTBOX ===== -->
+<div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
+    <img id="lightboxImg" src="" alt="Enlarged product image" />
+</div>
+
 <!-- ===== SIZE PICKER MODAL ===== -->
 <div class="size-overlay" id="sizeOverlay">
     <div class="size-modal">
@@ -957,6 +1008,38 @@
             });
         });
     });
+
+    // Image lightbox: click a product image to enlarge
+    (function () {
+        var lightbox = document.getElementById('lightbox');
+        var lightboxImg = document.getElementById('lightboxImg');
+        var lightboxClose = document.getElementById('lightboxClose');
+
+        function openLightbox(src, alt) {
+            lightboxImg.src = src;
+            lightboxImg.alt = alt || 'Enlarged product image';
+            lightbox.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeLightbox() {
+            lightbox.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        document.querySelectorAll('.product-img').forEach(function (img) {
+            img.addEventListener('click', function () {
+                openLightbox(img.src, img.alt);
+            });
+        });
+
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', function (e) {
+            if (e.target === lightbox) closeLightbox();
+        });
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    })();
 
     // Size picker: every "Add to Cart" opens the size modal first,
     // then adds to Snipcart with the chosen size as a custom field.

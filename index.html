@@ -562,6 +562,121 @@
         }
         .lightbox-close:hover { opacity: 1; color: var(--gold-light); }
 
+        /* ===== INFO MODALS (Sizing / Materials / Terms) ===== */
+        .info-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(28, 28, 27, .55);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            z-index: 1050;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity .3s var(--ease), visibility .3s var(--ease);
+        }
+        .info-overlay.open { opacity: 1; visibility: visible; }
+        .info-modal {
+            background: var(--bone);
+            width: min(680px, 100%);
+            max-height: 86vh;
+            overflow-y: auto;
+            padding: 48px 46px 44px;
+            position: relative;
+            text-align: left;
+            transform: translateY(14px);
+            transition: transform .35s var(--ease);
+            box-shadow: 0 30px 80px rgba(0,0,0,.25);
+        }
+        .info-overlay.open .info-modal { transform: translateY(0); }
+        .info-modal .close {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            background: none;
+            border: 0;
+            font-size: 24px;
+            line-height: 1;
+            color: var(--grey-500);
+            cursor: pointer;
+            transition: color .25s var(--ease);
+        }
+        .info-modal .close:hover { color: var(--ink); }
+        .info-modal .eyebrow {
+            font-size: 10px;
+            letter-spacing: .35em;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 500;
+        }
+        .info-modal h3 {
+            font-family: var(--serif);
+            font-weight: 300;
+            font-size: 30px;
+            color: var(--ink);
+            margin: 8px 0 4px;
+        }
+        .info-modal h4 {
+            font-family: var(--serif);
+            font-weight: 400;
+            font-size: 20px;
+            color: var(--ink);
+            margin: 28px 0 10px;
+        }
+        .info-modal p,
+        .info-modal li {
+            font-size: 13px;
+            line-height: 1.7;
+            color: var(--grey-700);
+            font-weight: 300;
+        }
+        .info-modal p { margin-bottom: 10px; }
+        .info-modal ul { margin: 0 0 10px 18px; }
+        .info-modal li { margin-bottom: 4px; }
+        .info-modal strong { font-weight: 500; color: var(--ink); }
+        .info-modal a { color: var(--gold); text-decoration: none; }
+        .info-modal a:hover { text-decoration: underline; }
+        .info-modal .note {
+            background: var(--white);
+            border-left: 2px solid var(--gold);
+            padding: 12px 16px;
+            margin: 14px 0;
+            font-size: 12.5px;
+        }
+        .size-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 6px 0 4px;
+            font-size: 12.5px;
+        }
+        .size-table th,
+        .size-table td {
+            border: 1px solid var(--grey-100);
+            padding: 8px 10px;
+            text-align: center;
+            color: var(--grey-700);
+            font-weight: 300;
+        }
+        .size-table th {
+            background: var(--white);
+            color: var(--ink);
+            font-weight: 500;
+            letter-spacing: .04em;
+        }
+        .size-cap {
+            font-size: 11px;
+            color: var(--grey-500);
+            margin-top: 6px;
+            font-style: italic;
+        }
+        @media (max-width: 640px) {
+            .info-modal { padding: 40px 24px 32px; }
+            .size-table th, .size-table td { padding: 6px 5px; font-size: 11px; }
+        }
+
         /* ===== SNIPCART CART — CHOC THEME ===== */
         #snipcart {
             /* Brand palette mapped onto Snipcart's design tokens */
@@ -966,6 +1081,9 @@
     <footer>
         <span>© MMXXVI CHOC</span>
         <div class="socials">
+            <a href="#" data-info="sizing">Sizing</a>
+            <a href="#" data-info="materials">Materials &amp; Care</a>
+            <a href="#" data-info="terms">Terms &amp; Refunds</a>
             <a href="https://www.instagram.com/charteredhouseofchange/" target="_blank" rel="noopener">Instagram</a>
         </div>
     </footer>
@@ -996,7 +1114,181 @@
     </div>
 </div>
 
+<!-- ===== SIZING MODAL ===== -->
+<div class="info-overlay" id="info-sizing">
+    <div class="info-modal">
+        <button class="close" aria-label="Close">&times;</button>
+        <p class="eyebrow">Fit Guide</p>
+        <h3>Sizing</h3>
+        <p>All garments are unisex. Measurements are of the garment itself, laid flat. If you're between sizes or prefer a relaxed fit, size up.</p>
+
+        <h4>Tees</h4>
+        <table class="size-table">
+            <thead><tr><th>Size</th><th>S</th><th>M</th><th>L</th><th>XL</th><th>2XL</th></tr></thead>
+            <tbody>
+                <tr><td>Chest (in)</td><td>18</td><td>20</td><td>22</td><td>24</td><td>26</td></tr>
+                <tr><td>Length (in)</td><td>28</td><td>29</td><td>30</td><td>31</td><td>32</td></tr>
+            </tbody>
+        </table>
+        <p class="size-cap">Chest measured flat, armpit to armpit. Length from shoulder seam to hem.</p>
+
+        <h4>Outreach Hoodies</h4>
+        <table class="size-table">
+            <thead><tr><th>Size</th><th>S</th><th>M</th><th>L</th><th>XL</th><th>2XL</th></tr></thead>
+            <tbody>
+                <tr><td>Chest (in)</td><td>20</td><td>22</td><td>24</td><td>26</td><td>28</td></tr>
+                <tr><td>Length (in)</td><td>27</td><td>28</td><td>29</td><td>30</td><td>31</td></tr>
+            </tbody>
+        </table>
+        <p class="size-cap">Relaxed streetwear fit.</p>
+
+        <h4>Coordinates Hoodies</h4>
+        <div class="note"><strong>Please note:</strong> these hoodies use <strong>EU sizing, which runs smaller</strong> than standard UK/US sizing. We recommend ordering <strong>one size up</strong> from your usual.</div>
+        <table class="size-table">
+            <thead><tr><th>Size</th><th>S</th><th>M</th><th>L</th><th>XL</th><th>2XL</th></tr></thead>
+            <tbody>
+                <tr><td>Chest (in)</td><td>20</td><td>21½</td><td>23</td><td>24½</td><td>26</td></tr>
+                <tr><td>Length (in)</td><td>26½</td><td>27½</td><td>28½</td><td>29½</td><td>30½</td></tr>
+            </tbody>
+        </table>
+        <p class="size-cap">Heavyweight organic cotton, regular fit — EU sizing.</p>
+
+        <h4>Polos</h4>
+        <table class="size-table">
+            <thead><tr><th>Size</th><th>S</th><th>M</th><th>L</th><th>XL</th><th>2XL</th></tr></thead>
+            <tbody>
+                <tr><td>Chest (in)</td><td>19</td><td>20½</td><td>22</td><td>23½</td><td>25</td></tr>
+                <tr><td>Length (in)</td><td>28</td><td>29</td><td>30</td><td>31</td><td>32</td></tr>
+            </tbody>
+        </table>
+        <p class="size-cap">Classic fit with side slits.</p>
+
+        <p class="size-cap" style="margin-top:18px;">Measurements are approximate and may vary by up to 1&quot; due to the made-to-order nature of each garment. Questions about fit? Email <a href="mailto:ethan@chocstudio.com">ethan@chocstudio.com</a>.</p>
+    </div>
+</div>
+
+<!-- ===== MATERIALS & CARE MODAL ===== -->
+<div class="info-overlay" id="info-materials">
+    <div class="info-modal">
+        <button class="close" aria-label="Close">&times;</button>
+        <p class="eyebrow">Fabric &amp; Care</p>
+        <h3>Materials &amp; Care</h3>
+        <p>Every piece is made to order using premium blanks, printed and finished individually. Compositions vary slightly by product below.</p>
+
+        <h4>Tees</h4>
+        <ul>
+            <li>100% cotton</li>
+            <li>Fabric weight: 5.0–5.3 oz/yd² (170–180 g/m²)</li>
+            <li>Pre-shrunk jersey knit</li>
+            <li>Taped neck and shoulders</li>
+            <li>Double seam at sleeves and bottom hem</li>
+        </ul>
+        <p class="size-cap">White may appear off-white rather than bright white due to the natural fabric.</p>
+
+        <h4>Outreach Hoodies</h4>
+        <ul>
+            <li>65% ring-spun cotton, 35% polyester · 100% cotton face</li>
+            <li>Fabric weight: 8.5 oz/yd² (288 g/m²)</li>
+            <li>Front pouch pocket · 3-panel hood</li>
+            <li>Matching flat drawstrings</li>
+        </ul>
+
+        <h4>Coordinates Hoodies</h4>
+        <ul>
+            <li>100% organic cotton</li>
+            <li>Fabric weight: 10.32 oz/yd² (350 g/m²) — heavyweight</li>
+            <li>Self-fabric double-layered hood · front pouch pocket</li>
+            <li>GOTS &amp; OCS certified organic · OEKO-TEX® Standard 100 · PETA-Approved Vegan</li>
+        </ul>
+
+        <h4>Polos</h4>
+        <ul>
+            <li>100% combed ring-spun cotton</li>
+            <li>Fabric weight: 6.2 oz/yd² (210 g/m²)</li>
+            <li>Ribbed collar · tone-on-tone 3-button placket</li>
+            <li>Straight hem with side slits</li>
+        </ul>
+
+        <h4>Care</h4>
+        <ul>
+            <li>Machine wash cold, inside out, with like colours</li>
+            <li>Do not iron directly on the print</li>
+            <li>Tumble dry low or hang to dry</li>
+            <li>Do not dry clean or bleach</li>
+        </ul>
+        <p class="size-cap">Following these steps keeps your print looking sharp for longer.</p>
+    </div>
+</div>
+
+<!-- ===== TERMS & REFUNDS MODAL ===== -->
+<div class="info-overlay" id="info-terms">
+    <div class="info-modal">
+        <button class="close" aria-label="Close">&times;</button>
+        <p class="eyebrow">Legal</p>
+        <h3>Terms &amp; Refunds</h3>
+        <p>These terms govern your use of chocstudio.com and any purchase made through it. By placing an order you agree to them.</p>
+
+        <h4>Who We Are</h4>
+        <p><strong>Chartered House of Change</strong> ("CHOC", "we", "us") is a sole trader based in the United Kingdom. Contact: <a href="mailto:ethan@chocstudio.com">ethan@chocstudio.com</a>.</p>
+
+        <h4>Products &amp; Made to Order</h4>
+        <p>All items are printed on demand and made specifically for you once you order. Colours may vary slightly between screens and the finished garment. Product photos are mockups; small differences in print placement are normal.</p>
+
+        <h4>Pricing &amp; Payment</h4>
+        <p>All prices are in GBP (£) and include VAT where applicable. Payment is processed securely by Stripe via Snipcart. We do not store your card details.</p>
+
+        <h4>Shipping</h4>
+        <p>We currently ship to the <strong>United Kingdom only</strong>. UK shipping is <strong>free</strong>. Orders are typically produced and dispatched within a few business days; delivery times may vary as items are made to order.</p>
+
+        <h4>Returns &amp; Refunds</h4>
+        <p>Because every item is custom-made to order, we <strong>cannot accept returns or exchanges</strong> for change of mind or incorrect size selection. Please check the <a href="#" data-info="sizing">sizing guide</a> before ordering.</p>
+        <p>We will, of course, put things right if your order arrives <strong>faulty, damaged, or is the wrong item</strong>. Email <a href="mailto:ethan@chocstudio.com">ethan@chocstudio.com</a> within <strong>14 days</strong> of delivery with your order number and a photo of the issue, and we'll arrange a replacement or refund.</p>
+        <p>This does not affect your statutory rights under UK consumer law.</p>
+
+        <h4>Discount Codes</h4>
+        <p>Promotional and friends &amp; family codes are applied at checkout, cannot be exchanged for cash, and may be withdrawn or changed at any time.</p>
+
+        <h4>Privacy</h4>
+        <p>We only collect the information needed to fulfil your order (name, address, email, order details). This is shared with our payment processor (Stripe/Snipcart) and our print &amp; fulfilment partner (Printful) solely to process and deliver your order. We never sell your data. For any privacy request, email <a href="mailto:ethan@chocstudio.com">ethan@chocstudio.com</a>.</p>
+
+        <h4>Contact</h4>
+        <p>Questions about an order or these terms? Email <a href="mailto:ethan@chocstudio.com">ethan@chocstudio.com</a>.</p>
+
+        <p class="size-cap" style="margin-top:18px;">Last updated: July 2026.</p>
+    </div>
+</div>
+
 <script>
+    // Info modals (Sizing / Materials / Terms) — open via any [data-info] link
+    (function () {
+        function openInfo(id) {
+            var overlay = document.getElementById('info-' + id);
+            if (overlay) overlay.classList.add('open');
+        }
+        function closeAll() {
+            document.querySelectorAll('.info-overlay.open').forEach(function (o) {
+                o.classList.remove('open');
+            });
+        }
+        document.querySelectorAll('[data-info]').forEach(function (link) {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                closeAll();
+                openInfo(link.getAttribute('data-info'));
+            });
+        });
+        document.querySelectorAll('.info-overlay').forEach(function (overlay) {
+            overlay.addEventListener('click', function (e) {
+                if (e.target === overlay || e.target.classList.contains('close')) {
+                    overlay.classList.remove('open');
+                }
+            });
+        });
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') closeAll();
+        });
+    })();
+
     // Thumbnail gallery swap
     document.querySelectorAll('.product').forEach(function (product) {
         var main = product.querySelector('.product-img');

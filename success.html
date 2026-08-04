@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>Thank you — Chartered House of Change</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #f7f5f1; color: #1c1c1b;
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh; display: flex; align-items: center; justify-content: center;
+            text-align: center; padding: 40px;
+        }
+        .wrap { max-width: 520px; }
+        img { width: 84px; margin-bottom: 32px; }
+        .eyebrow {
+            font-size: 11px; letter-spacing: .34em; text-transform: uppercase;
+            color: #b8965a; margin-bottom: 18px;
+        }
+        h1 {
+            font-family: 'Cormorant Garamond', serif; font-weight: 300;
+            font-size: 40px; letter-spacing: .01em; margin-bottom: 22px;
+        }
+        p { font-size: 14px; line-height: 1.8; color: #4a4a48; margin-bottom: 16px; }
+        a.back {
+            display: inline-block; margin-top: 28px; padding: 15px 40px;
+            background: #b8965a; color: #fff; text-decoration: none;
+            font-size: 11px; letter-spacing: .28em; text-transform: uppercase;
+            transition: background .25s ease;
+        }
+        a.back:hover { background: #8e6f3d; }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <img src="CHOC logo.png" alt="Chartered House of Change" />
+        <p class="eyebrow">Order Confirmed</p>
+        <h1>Thank you.</h1>
+        <p>Your order has been received and payment confirmed. A receipt is on its way to your email.</p>
+        <p>Every piece is made to order — please allow time for production and delivery. You'll receive tracking by email once it ships.</p>
+        <p>Chartered House of Change · Est. MMXXVI</p>
+        <a class="back" href="/">Return to shop</a>
+    </div>
+    <script>
+        // Order placed — empty the cart
+        try { localStorage.removeItem('choc_cart'); } catch (e) {}
+    </script>
+</body>
+</html>

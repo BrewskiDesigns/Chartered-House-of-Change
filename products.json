@@ -1,0 +1,96 @@
+{
+  "currency": "gbp",
+  "sizes": ["S", "M", "L", "XL", "2XL"],
+  "products": {
+    "hard-court-tee": {
+      "name": "Hard Court Tee",
+      "price": 2500,
+      "image": "Mockups/Hard Court Tee/unisex-classic-tee-white-front-6a59292475436.png",
+      "description": "The Tennis Court Collection — Hard Court Tee"
+    },
+    "grass-court-tee": {
+      "name": "Grass Court Tee",
+      "price": 2500,
+      "image": "Mockups/Grass Court Tee/unisex-classic-tee-white-front-6a5928badaa4d.png",
+      "description": "The Tennis Court Collection — Grass Court Tee"
+    },
+    "clay-court-tee": {
+      "name": "Clay Court Tee",
+      "price": 2500,
+      "image": "Mockups/Clay Court Tee/unisex-classic-tee-white-front-6a5928f48022e.png",
+      "description": "The Tennis Court Collection — Clay Court Tee"
+    },
+    "siena-outreach-hoodie": {
+      "name": "Siena Outreach Hoodie",
+      "price": 5500,
+      "image": "Mockups/Siena Outreach Hoodie/unisex-premium-pullover-hoodie-maroon-front-6a58ccb01e1d8.png",
+      "description": "Italian Outreach Collection — Siena Outreach Hoodie"
+    },
+    "florence-outreach-hoodie": {
+      "name": "Florence Outreach Hoodie",
+      "price": 5500,
+      "image": "Mockups/Florence Outreach Hoodie/unisex-premium-pullover-hoodie-team-royal-front-6a58cc69bde4b.png",
+      "description": "Italian Outreach Collection — Florence Outreach Hoodie"
+    },
+    "venice-outreach-hoodie": {
+      "name": "Venice Outreach Hoodie",
+      "price": 5500,
+      "image": "Mockups/Venice Outreach Hoodie/unisex-premium-pullover-hoodie-forest-green-front-6a58cc1cbc824.png",
+      "description": "Italian Outreach Collection — Venice Outreach Hoodie"
+    },
+    "st-tropez-tee-white": {
+      "name": "St Tropez Tee — White",
+      "price": 2500,
+      "image": "Mockups/St Tropez tee white/unisex-classic-tee-white-front-6a440faade0b9.png",
+      "description": "Coordinates Collection — St. Tropez Tee (White)"
+    },
+    "st-tropez-tee-black": {
+      "name": "St Tropez Tee — Black",
+      "price": 2500,
+      "image": "Mockups/St Tropez tee black/unisex-classic-tee-black-front-6a42d2b5bfaa5.png",
+      "description": "Coordinates Collection — St. Tropez Tee (Black)"
+    },
+    "st-tropez-hoodie": {
+      "name": "St Tropez Hoodie",
+      "price": 5500,
+      "image": "Mockups/St. Tropez Hoodie/unisex-essential-eco-cruiser-2.0-hoodie-black-front-6a5926eb431cb.png",
+      "description": "Coordinates Collection — St. Tropez Hoodie"
+    },
+    "classic-tee-white": {
+      "name": "Classic Tee — White",
+      "price": 2500,
+      "image": "Mockups/Classic Tee White/unisex-classic-tee-white-front-6a5babdc495ea.png",
+      "description": "Embroidery Collection — Classic Tee (White)"
+    },
+    "classic-tee-black": {
+      "name": "Classic Tee — Black",
+      "price": 2500,
+      "image": "Mockups/Classic Tee Black/unisex-classic-tee-black-front-6a5bac1bd98b2.png",
+      "description": "Embroidery Collection — Classic Tee (Black)"
+    },
+    "classic-tee-navy": {
+      "name": "Classic Tee — Navy",
+      "price": 2500,
+      "image": "Mockups/Classic Tee Navy/unisex-classic-tee-navy-front-6a5bac4a3d6ae.png",
+      "description": "Embroidery Collection — Classic Tee (Navy)"
+    },
+    "classic-polo-white": {
+      "name": "Classic Polo — White",
+      "price": 3500,
+      "image": "Mockups/Classic Polo White/unisex-premium-pique-polo-shirt-white-front-6a5bab088e870.png",
+      "description": "Embroidery Collection — Classic Polo (White)"
+    },
+    "classic-polo-black": {
+      "name": "Classic Polo — Black",
+      "price": 3500,
+      "image": "Mockups/Classic Polo Black/unisex-premium-pique-polo-shirt-black-front-6a5bab655e941.png",
+      "description": "Embroidery Collection — Classic Polo (Black)"
+    },
+    "classic-polo-navy": {
+      "name": "Classic Polo — Navy",
+      "price": 3500,
+      "image": "Mockups/Classic Polo Navy/unisex-premium-pique-polo-shirt-navy-front-6a5baba4576a8.png",
+      "description": "Embroidery Collection — Classic Polo (Navy)"
+    }
+  }
+}

@@ -26,7 +26,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.9.0/default/snipcart.css" />
     <style>
         :root {
             --white: #ffffff;
@@ -694,48 +693,99 @@
             .size-table th, .size-table td { padding: 6px 5px; font-size: 11px; }
         }
 
-        /* ===== SNIPCART CART — CHOC THEME ===== */
-        #snipcart {
-            /* Brand palette mapped onto Snipcart's design tokens */
-            --bgColor-default: #f7f5f1;          /* bone */
-            --bgColor-alt: #ffffff;
-            --color-default: #1c1c1b;            /* ink */
-            --color-alt: #4a4a48;                /* grey-700 */
-            --color-icon: #b8965a;               /* gold */
-            --color-link: #b8965a;               /* gold */
-            --color-link-hover: #8e6f3d;
-
-            --borderColor-default: #e3e3e1;      /* grey-100 */
-            --borderColor-alt: #b8b8b6;          /* grey-300 */
-
-            /* Primary buttons (checkout / continue) */
-            --color-buttonPrimary: #ffffff;
-            --bgColor-buttonPrimary: #b8965a;            /* gold */
-            --bgColor-buttonPrimary-hover: #8e6f3d;
-            --color-buttonPrimary-hover: #ffffff;
-
-            /* Secondary buttons */
-            --color-buttonSecondary: #1c1c1b;
-            --bgColor-buttonSecondary: transparent;
-            --borderColor-buttonSecondary: #1c1c1b;
-
-            --color-inputLabel: #7a7a78;         /* grey-500 */
-            --bgColor-input: #ffffff;
-            --color-input: #1c1c1b;
-
-            --color-success: #b8965a;
-            --bgColor-badge: #b8965a;            /* gold count badge */
-
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        /* ===== CART DRAWER — CHOC ===== */
+        .cart-overlay {
+            position: fixed; inset: 0;
+            background: rgba(28,28,27,.35);
+            opacity: 0; visibility: hidden;
+            transition: opacity .3s ease, visibility .3s ease;
+            z-index: 1000;
         }
-        /* Headings inside the cart use the brand serif */
-        #snipcart .snipcart-modal__header-title,
-        #snipcart .snipcart-cart-header__title,
-        #snipcart h1, #snipcart h2 {
+        .cart-overlay.open { opacity: 1; visibility: visible; }
+        .cart-drawer {
+            position: fixed; top: 0; right: 0; height: 100%;
+            width: 420px; max-width: 90vw;
+            background: #f7f5f1;
+            box-shadow: -8px 0 40px rgba(0,0,0,.12);
+            transform: translateX(100%);
+            transition: transform .32s cubic-bezier(.4,0,.2,1);
+            z-index: 1001;
+            display: flex; flex-direction: column;
+            font-family: 'Inter', sans-serif;
+        }
+        .cart-drawer.open { transform: translateX(0); }
+        .cart-drawer__head {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 28px 28px 18px;
+            border-bottom: 1px solid #e3e3e1;
+        }
+        .cart-drawer__head h2 {
             font-family: 'Cormorant Garamond', serif;
-            font-weight: 300;
-            letter-spacing: .02em;
+            font-weight: 300; font-size: 26px; letter-spacing: .02em;
+            color: #1c1c1b; margin: 0;
         }
+        .cart-drawer__close {
+            background: none; border: 0; font-size: 26px; line-height: 1;
+            color: #1c1c1b; cursor: pointer;
+        }
+        .cart-drawer__items { flex: 1; overflow-y: auto; padding: 12px 28px; }
+        .cart-empty {
+            color: #7a7a78; font-size: 13px; text-align: center;
+            padding: 60px 0; letter-spacing: .04em;
+        }
+        .cart-line {
+            display: flex; gap: 14px; padding: 18px 0;
+            border-bottom: 1px solid #e3e3e1;
+        }
+        .cart-line img {
+            width: 64px; height: 64px; object-fit: cover;
+            background: #fff; border: 1px solid #e3e3e1; flex-shrink: 0;
+        }
+        .cart-line__info { flex: 1; min-width: 0; }
+        .cart-line__name {
+            font-size: 13px; color: #1c1c1b; font-weight: 500;
+            letter-spacing: .02em; margin: 0 0 4px;
+        }
+        .cart-line__size {
+            font-size: 11px; color: #7a7a78; letter-spacing: .1em;
+            text-transform: uppercase; margin: 0 0 10px;
+        }
+        .cart-line__row { display: flex; align-items: center; justify-content: space-between; }
+        .qty-stepper { display: inline-flex; align-items: center; border: 1px solid #b8b8b6; }
+        .qty-stepper button {
+            width: 26px; height: 26px; background: none; border: 0;
+            font-size: 15px; color: #1c1c1b; cursor: pointer; line-height: 1;
+        }
+        .qty-stepper span { min-width: 26px; text-align: center; font-size: 12px; }
+        .cart-line__price { font-size: 13px; color: #1c1c1b; }
+        .cart-line__remove {
+            background: none; border: 0; font-size: 10.5px; letter-spacing: .1em;
+            text-transform: uppercase; color: #7a7a78; cursor: pointer;
+            margin-top: 8px; padding: 0;
+        }
+        .cart-line__remove:hover { color: #1c1c1b; }
+        .cart-drawer__foot { padding: 20px 28px 28px; border-top: 1px solid #e3e3e1; }
+        .cart-subtotal {
+            display: flex; justify-content: space-between; align-items: baseline;
+            margin-bottom: 6px;
+        }
+        .cart-subtotal span:first-child {
+            font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: #7a7a78;
+        }
+        .cart-subtotal span:last-child {
+            font-family: 'Cormorant Garamond', serif; font-size: 24px; color: #1c1c1b;
+        }
+        .cart-shipping {
+            font-size: 11px; color: #7a7a78; letter-spacing: .06em; margin-bottom: 18px;
+        }
+        .cart-checkout {
+            width: 100%; padding: 16px; background: #b8965a; color: #fff;
+            border: 0; font-family: 'Inter', sans-serif; font-size: 11px;
+            letter-spacing: .28em; text-transform: uppercase; cursor: pointer;
+            transition: background .25s ease;
+        }
+        .cart-checkout:hover { background: #8e6f3d; }
+        .cart-checkout:disabled { background: #b8b8b6; cursor: not-allowed; }
     </style>
 </head>
 <body>
@@ -745,8 +795,8 @@
     <!-- ===== TOP BAR ===== -->
     <div class="top-bar">
         <span>Est. <span class="gold-text">MMXXVI</span></span>
-        <button class="cart-btn snipcart-checkout" aria-label="Open cart">
-            Cart <span class="snipcart-items-count cart-count">0</span>
+        <button class="cart-btn" id="cartOpen" aria-label="Open cart">
+            Cart <span class="cart-count">0</span>
         </button>
     </div>
 
@@ -789,7 +839,7 @@
                 </div>
                 <h3 class="product-name">Hard Court Tee</h3>
                 <p class="product-price">£25.00</p>
-                <button class="add-btn snipcart-add-item"
+                <button class="add-btn"
                     data-item-id="hard-court-tee"
                     data-item-name="Hard Court Tee"
                     data-item-price="25.00"
@@ -811,7 +861,7 @@
                 </div>
                 <h3 class="product-name">Grass Court Tee</h3>
                 <p class="product-price">£25.00</p>
-                <button class="add-btn snipcart-add-item"
+                <button class="add-btn"
                     data-item-id="grass-court-tee"
                     data-item-name="Grass Court Tee"
                     data-item-price="25.00"
@@ -833,7 +883,7 @@
                 </div>
                 <h3 class="product-name">Clay Court Tee</h3>
                 <p class="product-price">£25.00</p>
-                <button class="add-btn snipcart-add-item"
+                <button class="add-btn"
                     data-item-id="clay-court-tee"
                     data-item-name="Clay Court Tee"
                     data-item-price="25.00"
@@ -865,7 +915,7 @@
                 </div>
                 <h3 class="product-name">Siena Outreach Hoodie</h3>
                 <p class="product-price">£55.00</p>
-                <button class="add-btn snipcart-add-item"
+                <button class="add-btn"
                     data-item-id="siena-outreach-hoodie"
                     data-item-name="Siena Outreach Hoodie"
                     data-item-price="55.00"
@@ -887,7 +937,7 @@
                 </div>
                 <h3 class="product-name">Florence Outreach Hoodie</h3>
                 <p class="product-price">£55.00</p>
-                <button class="add-btn snipcart-add-item"
+                <button class="add-btn"
                     data-item-id="florence-outreach-hoodie"
                     data-item-name="Florence Outreach Hoodie"
                     data-item-price="55.00"
@@ -909,7 +959,7 @@
                 </div>
                 <h3 class="product-name">Venice Outreach Hoodie</h3>
                 <p class="product-price">£55.00</p>
-                <button class="add-btn snipcart-add-item"
+                <button class="add-btn"
                     data-item-id="venice-outreach-hoodie"
                     data-item-name="Venice Outreach Hoodie"
                     data-item-price="55.00"
@@ -941,7 +991,7 @@
                 </div>
                 <h3 class="product-name">St Tropez Tee — White</h3>
                 <p class="product-price">£25.00</p>
-                <button class="add-btn snipcart-add-item"
+                <button class="add-btn"
                     data-item-id="st-tropez-tee-white"
                     data-item-name="St Tropez Tee — White"
                     data-item-price="25.00"
@@ -963,7 +1013,7 @@
                 </div>
                 <h3 class="product-name">St Tropez Tee — Black</h3>
                 <p class="product-price">£25.00</p>
-                <button class="add-btn snipcart-add-item"
+                <button class="add-btn"
                     data-item-id="st-tropez-tee-black"
                     data-item-name="St Tropez Tee — Black"
                     data-item-price="25.00"
@@ -985,7 +1035,7 @@
                 </div>
                 <h3 class="product-name">St Tropez Hoodie</h3>
                 <p class="product-price">£55.00</p>
-                <button class="add-btn snipcart-add-item"
+                <button class="add-btn"
                     data-item-id="st-tropez-hoodie"
                     data-item-name="St Tropez Hoodie"
                     data-item-price="55.00"
@@ -1017,7 +1067,7 @@
                 </div>
                 <h3 class="product-name">Classic Tee — White</h3>
                 <p class="product-price">£25.00</p>
-                <button class="add-btn snipcart-add-item"
+                <button class="add-btn"
                     data-item-id="classic-tee-white"
                     data-item-name="Classic Tee — White"
                     data-item-price="25.00"
@@ -1039,7 +1089,7 @@
                 </div>
                 <h3 class="product-name">Classic Tee — Black</h3>
                 <p class="product-price">£25.00</p>
-                <button class="add-btn snipcart-add-item"
+                <button class="add-btn"
                     data-item-id="classic-tee-black"
                     data-item-name="Classic Tee — Black"
                     data-item-price="25.00"
@@ -1061,7 +1111,7 @@
                 </div>
                 <h3 class="product-name">Classic Tee — Navy</h3>
                 <p class="product-price">£25.00</p>
-                <button class="add-btn snipcart-add-item"
+                <button class="add-btn"
                     data-item-id="classic-tee-navy"
                     data-item-name="Classic Tee — Navy"
                     data-item-price="25.00"
@@ -1083,7 +1133,7 @@
                 </div>
                 <h3 class="product-name">Classic Polo — White</h3>
                 <p class="product-price">£35.00</p>
-                <button class="add-btn snipcart-add-item"
+                <button class="add-btn"
                     data-item-id="classic-polo-white"
                     data-item-name="Classic Polo — White"
                     data-item-price="35.00"
@@ -1105,7 +1155,7 @@
                 </div>
                 <h3 class="product-name">Classic Polo — Black</h3>
                 <p class="product-price">£35.00</p>
-                <button class="add-btn snipcart-add-item"
+                <button class="add-btn"
                     data-item-id="classic-polo-black"
                     data-item-name="Classic Polo — Black"
                     data-item-price="35.00"
@@ -1127,7 +1177,7 @@
                 </div>
                 <h3 class="product-name">Classic Polo — Navy</h3>
                 <p class="product-price">£35.00</p>
-                <button class="add-btn snipcart-add-item"
+                <button class="add-btn"
                     data-item-id="classic-polo-navy"
                     data-item-name="Classic Polo — Navy"
                     data-item-price="35.00"
@@ -1176,6 +1226,24 @@
         <button class="size-confirm" id="sizeConfirm" disabled>Confirm</button>
     </div>
 </div>
+
+<!-- ===== CART DRAWER ===== -->
+<div class="cart-overlay" id="cartOverlay"></div>
+<aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart">
+    <div class="cart-drawer__head">
+        <h2>Your Cart</h2>
+        <button class="cart-drawer__close" id="cartClose" aria-label="Close cart">&times;</button>
+    </div>
+    <div class="cart-drawer__items" id="cartItems"></div>
+    <div class="cart-drawer__foot">
+        <div class="cart-subtotal">
+            <span>Subtotal</span>
+            <span id="cartSubtotal">£0.00</span>
+        </div>
+        <p class="cart-shipping">Free UK shipping · made to order</p>
+        <button class="cart-checkout" id="cartCheckout" disabled>Checkout</button>
+    </div>
+</aside>
 
 <!-- ===== SIZING MODAL ===== -->
 <div class="info-overlay" id="info-sizing">
@@ -1298,7 +1366,7 @@
         <p>All items are printed on demand and made specifically for you once you order. Colours may vary slightly between screens and the finished garment. Product photos are mockups; small differences in print placement are normal.</p>
 
         <h4>Pricing &amp; Payment</h4>
-        <p>All prices are in GBP (£) and include VAT where applicable. Payment is processed securely by Stripe via Snipcart. We do not store your card details.</p>
+        <p>All prices are in GBP (£) and include VAT where applicable. Payment is processed securely by Stripe. We do not store your card details.</p>
 
         <h4>Shipping</h4>
         <p>We currently ship to the <strong>United Kingdom only</strong>. UK shipping is <strong>free</strong>. As every item is made to order, please allow a <strong>minimum of 5 business days for processing and production</strong>, followed by a <strong>minimum of 5 business days for delivery</strong> once dispatched. Times may vary.</p>
@@ -1312,7 +1380,7 @@
         <p>Promotional and friends &amp; family codes are applied at checkout, cannot be exchanged for cash, and may be withdrawn or changed at any time.</p>
 
         <h4>Privacy</h4>
-        <p>We only collect the information needed to fulfil your order (name, address, email, order details). This is shared with our payment processor (Stripe/Snipcart) and our print &amp; fulfilment partner (Printful) solely to process and deliver your order. We never sell your data. For any privacy request, email <a href="mailto:ethan@chocstudio.com">ethan@chocstudio.com</a>.</p>
+        <p>We only collect the information needed to fulfil your order (name, address, email, order details). This is shared with our payment processor (Stripe) and our print &amp; fulfilment partner (Printful) solely to process and deliver your order. We never sell your data. For any privacy request, email <a href="mailto:ethan@chocstudio.com">ethan@chocstudio.com</a>.</p>
 
         <h4>Governing Law</h4>
         <p>These terms are governed by the law of England and Wales.</p>
@@ -1399,45 +1467,147 @@
         });
     })();
 
-    // Size picker: every "Add to Cart" opens the size modal first,
-    // then adds to Snipcart with the chosen size as a custom field.
+    // ===== CART + SIZE PICKER (custom — replaces Snipcart) =====
     (function () {
-        var overlay = document.getElementById('sizeOverlay');
+        // Cloudflare Worker that creates the Stripe Checkout Session.
+        // TODO: set this to the deployed Worker URL once it's live.
+        var CHECKOUT_ENDPOINT = 'https://choc-checkout.ethan-d1a.workers.dev';
+        var STORAGE_KEY = 'choc_cart';
+
+        var cart = load();
+
+        function load() {
+            try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; }
+            catch (e) { return []; }
+        }
+        function save() { localStorage.setItem(STORAGE_KEY, JSON.stringify(cart)); }
+
+        function addItem(item) {
+            var existing = cart.find(function (l) { return l.id === item.id && l.size === item.size; });
+            if (existing) { existing.qty += 1; } else { cart.push(item); }
+            save(); render();
+        }
+        function setQty(id, size, qty) {
+            var line = cart.find(function (l) { return l.id === id && l.size === size; });
+            if (!line) return;
+            line.qty = qty;
+            if (line.qty <= 0) { cart = cart.filter(function (l) { return !(l.id === id && l.size === size); }); }
+            save(); render();
+        }
+        function removeItem(id, size) {
+            cart = cart.filter(function (l) { return !(l.id === id && l.size === size); });
+            save(); render();
+        }
+        function count() { return cart.reduce(function (n, l) { return n + l.qty; }, 0); }
+        function subtotal() { return cart.reduce(function (s, l) { return s + l.price * l.qty; }, 0); }
+        function money(n) { return '£' + n.toFixed(2); }
+
+        var overlay = document.getElementById('cartOverlay');
+        var drawer = document.getElementById('cartDrawer');
+        var itemsEl = document.getElementById('cartItems');
+        var subtotalEl = document.getElementById('cartSubtotal');
+        var checkoutBtn = document.getElementById('cartCheckout');
+        var countEls = document.querySelectorAll('.cart-count');
+
+        function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+
+        function render() {
+            var c = count();
+            countEls.forEach(function (el) { el.textContent = c; });
+            if (cart.length === 0) {
+                itemsEl.innerHTML = '<p class="cart-empty">Your cart is empty.</p>';
+            } else {
+                itemsEl.innerHTML = cart.map(function (l) {
+                    return '<div class="cart-line">' +
+                        '<img src="' + esc(l.image) + '" alt="' + esc(l.name) + '" />' +
+                        '<div class="cart-line__info">' +
+                            '<p class="cart-line__name">' + esc(l.name) + '</p>' +
+                            '<p class="cart-line__size">Size: ' + esc(l.size) + '</p>' +
+                            '<div class="cart-line__row">' +
+                                '<div class="qty-stepper">' +
+                                    '<button data-act="dec" data-id="' + esc(l.id) + '" data-size="' + esc(l.size) + '">&minus;</button>' +
+                                    '<span>' + l.qty + '</span>' +
+                                    '<button data-act="inc" data-id="' + esc(l.id) + '" data-size="' + esc(l.size) + '">+</button>' +
+                                '</div>' +
+                                '<span class="cart-line__price">' + money(l.price * l.qty) + '</span>' +
+                            '</div>' +
+                            '<button class="cart-line__remove" data-act="rm" data-id="' + esc(l.id) + '" data-size="' + esc(l.size) + '">Remove</button>' +
+                        '</div>' +
+                    '</div>';
+                }).join('');
+            }
+            subtotalEl.textContent = money(subtotal());
+            checkoutBtn.disabled = cart.length === 0;
+        }
+
+        itemsEl.addEventListener('click', function (e) {
+            var btn = e.target.closest('[data-act]');
+            if (!btn) return;
+            var id = btn.dataset.id, size = btn.dataset.size;
+            var line = cart.find(function (l) { return l.id === id && l.size === size; });
+            if (!line) return;
+            if (btn.dataset.act === 'inc') setQty(id, size, line.qty + 1);
+            else if (btn.dataset.act === 'dec') setQty(id, size, line.qty - 1);
+            else if (btn.dataset.act === 'rm') removeItem(id, size);
+        });
+
+        function openCart() { overlay.classList.add('open'); drawer.classList.add('open'); }
+        function closeCart() { overlay.classList.remove('open'); drawer.classList.remove('open'); }
+        document.getElementById('cartOpen').addEventListener('click', openCart);
+        document.getElementById('cartClose').addEventListener('click', closeCart);
+        overlay.addEventListener('click', closeCart);
+
+        checkoutBtn.addEventListener('click', function () {
+            if (cart.length === 0) return;
+            checkoutBtn.disabled = true;
+            checkoutBtn.textContent = 'Redirecting…';
+            fetch(CHECKOUT_ENDPOINT, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ items: cart.map(function (l) { return { id: l.id, size: l.size, qty: l.qty }; }) })
+            })
+            .then(function (r) { return r.json(); })
+            .then(function (data) {
+                if (data && data.url) { window.location = data.url; }
+                else { throw new Error('No checkout URL'); }
+            })
+            .catch(function () {
+                alert('Sorry — checkout is temporarily unavailable. Please try again shortly.');
+                checkoutBtn.disabled = false;
+                checkoutBtn.textContent = 'Checkout';
+            });
+        });
+
+        // ----- Size picker: pick size, then add to cart -----
+        var sizeOverlay = document.getElementById('sizeOverlay');
         var nameEl = document.getElementById('sizeProductName');
-        var closeBtn = document.getElementById('sizeClose');
+        var sizeCloseBtn = document.getElementById('sizeClose');
         var confirmBtn = document.getElementById('sizeConfirm');
         var sizeButtons = document.querySelectorAll('.size-grid button');
         var activeBtn = null;
         var chosenSize = null;
 
-        // Remove Snipcart's auto-trigger class and define the Size custom field
-        // on each button so Snipcart validates it, but only fires when WE click it.
         document.querySelectorAll('.add-btn').forEach(function (btn) {
             btn.classList.remove('snipcart-add-item');
-            btn.setAttribute('data-item-custom1-name', 'Size');
-            btn.setAttribute('data-item-custom1-options', 'S|M|L|XL|2XL');
             btn.addEventListener('click', function (e) {
-                if (btn.dataset.sizeChosen === '1') { return; } // let Snipcart handle this click
                 e.preventDefault();
-                openModal(btn);
+                openSize(btn);
             });
         });
 
-        function openModal(btn) {
+        function openSize(btn) {
             activeBtn = btn;
             chosenSize = null;
             sizeButtons.forEach(function (b) { b.classList.remove('selected'); });
             confirmBtn.disabled = true;
             nameEl.textContent = btn.getAttribute('data-item-name') || 'Choose a Size';
-            overlay.classList.add('open');
+            sizeOverlay.classList.add('open');
         }
-        function closeModal() {
-            overlay.classList.remove('open');
-            activeBtn = null;
-            chosenSize = null;
+        function closeSize() {
+            sizeOverlay.classList.remove('open');
+            activeBtn = null; chosenSize = null;
         }
 
-        // Step 1: pick a size (just highlights it, enables Confirm)
         sizeButtons.forEach(function (sizeBtn) {
             sizeBtn.addEventListener('click', function () {
                 chosenSize = sizeBtn.getAttribute('data-size');
@@ -1447,46 +1617,31 @@
             });
         });
 
-        // Step 2: confirm adds to Snipcart cart, then closes so they can keep shopping
         confirmBtn.addEventListener('click', function () {
             if (!activeBtn || !chosenSize) return;
-            var btn = activeBtn;
-            var size = chosenSize;
-
-            btn.setAttribute('data-item-custom1-value', size);
-            btn.classList.add('snipcart-add-item');
-            btn.dataset.sizeChosen = '1';
-            closeModal();
-
-            // Let Snipcart's delegated handler pick this up, then detach again
-            btn.click();
-            setTimeout(function () {
-                btn.classList.remove('snipcart-add-item');
-                delete btn.dataset.sizeChosen;
-            }, 0);
+            addItem({
+                id: activeBtn.getAttribute('data-item-id'),
+                name: activeBtn.getAttribute('data-item-name'),
+                price: parseFloat(activeBtn.getAttribute('data-item-price')),
+                image: activeBtn.getAttribute('data-item-image'),
+                size: chosenSize,
+                qty: 1
+            });
+            closeSize();
+            openCart();
         });
 
-        closeBtn.addEventListener('click', closeModal);
-        overlay.addEventListener('click', function (e) {
-            if (e.target === overlay) closeModal();
+        sizeCloseBtn.addEventListener('click', closeSize);
+        sizeOverlay.addEventListener('click', function (e) {
+            if (e.target === sizeOverlay) closeSize();
         });
         document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape') closeModal();
+            if (e.key === 'Escape') { closeSize(); closeCart(); }
         });
+
+        render();
     })();
 </script>
-
-<script>
-    window.SnipcartSettings = {
-        publicApiKey: 'NTFkMzQxYzItMjE4NS00ZDgzLWE3Y2ItYWQ1NTc4ZDcwMGQyNjM5MTgzMTc4NzkzNzg2MjI5',
-        currency: 'gbp',
-        loadStrategy: 'on-user-interaction'
-    };
-</script>
-<script async src="https://cdn.snipcart.com/themes/v3.9.0/default/snipcart.js"></script>
-<div hidden id="snipcart"
-    data-api-key="NTFkMzQxYzItMjE4NS00ZDgzLWE3Y2ItYWQ1NTc4ZDcwMGQyNjM5MTgzMTc4NzkzNzg2MjI5"
-    data-currency="gbp"></div>
 
 </body>
 </html>

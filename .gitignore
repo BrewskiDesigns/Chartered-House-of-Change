@@ -9,5 +9,8 @@
 !/google587a91d72fd8a429.html
 !/CHOC logo.png
 !/Mockups/
+!/products.json
+!/success.html
+!/cancel.html
 # Never track Mac clutter anywhere
 .DS_Store

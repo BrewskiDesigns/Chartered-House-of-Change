@@ -12,5 +12,6 @@
 !/products.json
 !/success.html
 !/cancel.html
+!/rebuilding.html
 # Never track Mac clutter anywhere
 .DS_Store

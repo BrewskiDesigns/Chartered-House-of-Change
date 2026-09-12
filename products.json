@@ -1,96 +1,215 @@
 {
   "currency": "gbp",
-  "sizes": ["S", "M", "L", "XL", "2XL"],
+  "sizes": [
+    "S",
+    "M",
+    "L",
+    "XL",
+    "2XL"
+  ],
   "products": {
-    "hard-court-tee": {
-      "name": "Hard Court Tee",
-      "price": 2500,
-      "image": "Mockups/Hard Court Tee/unisex-classic-tee-white-front-6a59292475436.png",
-      "description": "The Tennis Court Collection — Hard Court Tee"
-    },
-    "grass-court-tee": {
-      "name": "Grass Court Tee",
-      "price": 2500,
-      "image": "Mockups/Grass Court Tee/unisex-classic-tee-white-front-6a5928badaa4d.png",
-      "description": "The Tennis Court Collection — Grass Court Tee"
-    },
-    "clay-court-tee": {
-      "name": "Clay Court Tee",
-      "price": 2500,
-      "image": "Mockups/Clay Court Tee/unisex-classic-tee-white-front-6a5928f48022e.png",
-      "description": "The Tennis Court Collection — Clay Court Tee"
-    },
-    "siena-outreach-hoodie": {
-      "name": "Siena Outreach Hoodie",
-      "price": 5500,
-      "image": "Mockups/Siena Outreach Hoodie/unisex-premium-pullover-hoodie-maroon-front-6a58ccb01e1d8.png",
-      "description": "Italian Outreach Collection — Siena Outreach Hoodie"
-    },
-    "florence-outreach-hoodie": {
-      "name": "Florence Outreach Hoodie",
-      "price": 5500,
-      "image": "Mockups/Florence Outreach Hoodie/unisex-premium-pullover-hoodie-team-royal-front-6a58cc69bde4b.png",
-      "description": "Italian Outreach Collection — Florence Outreach Hoodie"
-    },
-    "venice-outreach-hoodie": {
-      "name": "Venice Outreach Hoodie",
-      "price": 5500,
-      "image": "Mockups/Venice Outreach Hoodie/unisex-premium-pullover-hoodie-forest-green-front-6a58cc1cbc824.png",
-      "description": "Italian Outreach Collection — Venice Outreach Hoodie"
-    },
-    "st-tropez-tee-white": {
-      "name": "St Tropez Tee — White",
-      "price": 2500,
-      "image": "Mockups/St Tropez tee white/unisex-classic-tee-white-front-6a440faade0b9.png",
-      "description": "Coordinates Collection — St. Tropez Tee (White)"
-    },
-    "st-tropez-tee-black": {
-      "name": "St Tropez Tee — Black",
-      "price": 2500,
-      "image": "Mockups/St Tropez tee black/unisex-classic-tee-black-front-6a42d2b5bfaa5.png",
-      "description": "Coordinates Collection — St. Tropez Tee (Black)"
+    "lake-como-hoodie": {
+      "name": "Lake Como Hoodie",
+      "price": 5000,
+      "image": "Mockups/Lake Como/unisex-essential-eco-cruiser-2.0-hoodie-black-back-6aa55cf1d2182.png",
+      "description": "The Classic Collection — Lake Como Hoodie",
+      "_hero": "back"
     },
     "st-tropez-hoodie": {
-      "name": "St Tropez Hoodie",
-      "price": 5500,
-      "image": "Mockups/St. Tropez Hoodie/unisex-essential-eco-cruiser-2.0-hoodie-black-front-6a5926eb431cb.png",
-      "description": "Coordinates Collection — St. Tropez Hoodie"
+      "name": "St. Tropez Hoodie",
+      "price": 5000,
+      "image": "Mockups/St. Tropez/unisex-essential-eco-cruiser-2.0-hoodie-black-back-6aa55d33953aa.png",
+      "description": "The Classic Collection — St. Tropez Hoodie",
+      "_hero": "back"
     },
-    "classic-tee-white": {
-      "name": "Classic Tee — White",
+    "stars-tee-black": {
+      "name": "Stars Tee — Black",
+      "price": 2000,
+      "image": "Mockups/stars black/unisex-classic-tee-black-front-6aa55e1cf021e.png",
+      "description": "Featured — Stars Tee (Black)",
+      "_hero": "front"
+    },
+    "stars-tee-white": {
+      "name": "Stars Tee — White",
+      "price": 2000,
+      "image": "Mockups/stars white/unisex-classic-tee-white-front-6aa55e4359918.png",
+      "description": "Featured — Stars Tee (White)",
+      "_hero": "front"
+    },
+    "stars-tee-pink": {
+      "name": "Stars Tee — Pink",
+      "price": 2000,
+      "image": "Mockups/stars pink /unisex-classic-tee-azalea-front-6aa55eb397635.png",
+      "description": "Featured — Stars Tee (Pink)",
+      "_hero": "front"
+    },
+    "stars-tee-sky-blue": {
+      "name": "Stars Tee — Sky Blue",
+      "price": 2000,
+      "image": "Mockups/stars sky blue/unisex-classic-tee-sky-front-6aa55e761b584.png",
+      "description": "Featured — Stars Tee (Sky Blue)",
+      "_hero": "front"
+    },
+    "stars-crop-top-black": {
+      "name": "Stars Crop Top — Black",
       "price": 2500,
-      "image": "Mockups/Classic Tee White/unisex-classic-tee-white-front-6a5babdc495ea.png",
-      "description": "Embroidery Collection — Classic Tee (White)"
+      "image": "Mockups/stars crop top black/womens-crop-top-black-front-6aa560c71939b.png",
+      "description": "Featured — Stars Crop Top (Black)",
+      "_hero": "front"
     },
-    "classic-tee-black": {
-      "name": "Classic Tee — Black",
+    "stars-crop-top-white": {
+      "name": "Stars Crop Top — White",
       "price": 2500,
-      "image": "Mockups/Classic Tee Black/unisex-classic-tee-black-front-6a5bac1bd98b2.png",
-      "description": "Embroidery Collection — Classic Tee (Black)"
+      "image": "Mockups/stars crop top white/womens-crop-top-white-front-6aa55efc374dd.png",
+      "description": "Featured — Stars Crop Top (White)",
+      "_hero": "front"
     },
-    "classic-tee-navy": {
-      "name": "Classic Tee — Navy",
+    "stars-crop-top-light-pink": {
+      "name": "Stars Crop Top — Light Pink",
       "price": 2500,
-      "image": "Mockups/Classic Tee Navy/unisex-classic-tee-navy-front-6a5bac4a3d6ae.png",
-      "description": "Embroidery Collection — Classic Tee (Navy)"
+      "image": "Mockups/stars crop top light pink/womens-crop-top-bubblegum-front-6aa56112c1eeb.png",
+      "description": "Featured — Stars Crop Top (Light Pink)",
+      "_hero": "front"
     },
-    "classic-polo-white": {
-      "name": "Classic Polo — White",
-      "price": 3500,
-      "image": "Mockups/Classic Polo White/unisex-premium-pique-polo-shirt-white-front-6a5bab088e870.png",
-      "description": "Embroidery Collection — Classic Polo (White)"
+    "wax-tee-black": {
+      "name": "Wax Seal Tee — Black",
+      "price": 2000,
+      "image": "Mockups/wax black/unisex-classic-tee-black-front-6aa55c7326b20.png",
+      "description": "Featured — Wax Seal Tee (Black)",
+      "_hero": "front"
     },
-    "classic-polo-black": {
-      "name": "Classic Polo — Black",
-      "price": 3500,
-      "image": "Mockups/Classic Polo Black/unisex-premium-pique-polo-shirt-black-front-6a5bab655e941.png",
-      "description": "Embroidery Collection — Classic Polo (Black)"
+    "wax-tee-navy": {
+      "name": "Wax Seal Tee — Navy",
+      "price": 2000,
+      "image": "Mockups/wax navy/unisex-classic-tee-navy-front-6aa55c519cf6e.png",
+      "description": "Featured — Wax Seal Tee (Navy)",
+      "_hero": "front"
     },
-    "classic-polo-navy": {
-      "name": "Classic Polo — Navy",
+    "wax-tee-white": {
+      "name": "Wax Seal Tee — White",
+      "price": 2000,
+      "image": "Mockups/wax white/unisex-classic-tee-white-front-6aa55cbc2fab3.png",
+      "description": "Featured — Wax Seal Tee (White)",
+      "_hero": "front"
+    },
+    "gym-sweatshirt-black": {
+      "name": "Gym Sweatshirt — Black",
+      "price": 4000,
+      "image": "Mockups/gym sweat black/unisex-premium-sweatshirt-black-front-6aa565f77dd9b.png",
+      "description": "The Gym Collection — Sweatshirt (Black)",
+      "_hero": "front"
+    },
+    "gym-sweatshirt-navy": {
+      "name": "Gym Sweatshirt — Navy",
+      "price": 4000,
+      "image": "Mockups/gym sweat navy/unisex-premium-sweatshirt-navy-blazer-front-6aa56630b324b.png",
+      "description": "The Gym Collection — Sweatshirt (Navy)",
+      "_hero": "front"
+    },
+    "gym-sweatshirt-white": {
+      "name": "Gym Sweatshirt — White",
+      "price": 4000,
+      "image": "Mockups/gym sweat white/unisex-premium-sweatshirt-white-front-6aa56663b9a01.png",
+      "description": "The Gym Collection — Sweatshirt (White)",
+      "_hero": "front"
+    },
+    "gym-tank-black": {
+      "name": "Gym Tank — Black",
       "price": 3500,
-      "image": "Mockups/Classic Polo Navy/unisex-premium-pique-polo-shirt-navy-front-6a5baba4576a8.png",
-      "description": "Embroidery Collection — Classic Polo (Navy)"
+      "image": "Mockups/gym tank top black/womens-micro-rib-tank-top-solid-black-blend-front-6aa566a5a814d.png",
+      "description": "The Gym Collection — Tank (Black)",
+      "_hero": "front"
+    },
+    "gym-tank-navy": {
+      "name": "Gym Tank — Navy",
+      "price": 3500,
+      "image": "Mockups/gym tank top navy/womens-micro-rib-tank-top-solid-navy-blend-front-6aa566cd32aed.png",
+      "description": "The Gym Collection — Tank (Navy)",
+      "_hero": "front"
+    },
+    "gym-tank-white": {
+      "name": "Gym Tank — White",
+      "price": 3500,
+      "image": "Mockups/gym tank top white/womens-micro-rib-tank-top-solid-white-blend-front-6aa566f2a68be.png",
+      "description": "The Gym Collection — Tank (White)",
+      "_hero": "front"
+    },
+    "gym-vest-black": {
+      "name": "Gym Vest — Black",
+      "price": 3500,
+      "image": "Mockups/gym tee black/unisex-staple-tank-top-black-front-6aa564e7018bc.png",
+      "description": "The Gym Collection — Vest (Black)",
+      "_hero": "front"
+    },
+    "gym-vest-navy": {
+      "name": "Gym Vest — Navy",
+      "price": 3500,
+      "image": "Mockups/gym tee navy/unisex-staple-tank-top-navy-front-6aa5650a18f4c.png",
+      "description": "The Gym Collection — Vest (Navy)",
+      "_hero": "front"
+    },
+    "gym-vest-white": {
+      "name": "Gym Vest — White",
+      "price": 3500,
+      "image": "Mockups/gym tee white/unisex-staple-tank-top-white-front-6aa5646a44dae.png",
+      "description": "The Gym Collection — Vest (White)",
+      "_hero": "front"
+    },
+    "embroidered-tee-black": {
+      "name": "Embroidered Tee — Black",
+      "price": 2000,
+      "image": "Mockups/tee black (E)/unisex-classic-tee-black-front-6a5bac1bd98b2.png",
+      "description": "The Embroidery Collection — Tee (Black)",
+      "_hero": "front"
+    },
+    "embroidered-tee-navy": {
+      "name": "Embroidered Tee — Navy",
+      "price": 2000,
+      "image": "Mockups/tee navy (E)/unisex-classic-tee-navy-front-6a5bac4a3d6ae.png",
+      "description": "The Embroidery Collection — Tee (Navy)",
+      "_hero": "front"
+    },
+    "embroidered-tee-white": {
+      "name": "Embroidered Tee — White",
+      "price": 2000,
+      "image": "Mockups/tee white (E)/unisex-classic-tee-white-front-6a5babdc495ea.png",
+      "description": "The Embroidery Collection — Tee (White)",
+      "_hero": "front"
+    },
+    "embroidered-tank-black": {
+      "name": "Embroidered Tank — Black",
+      "price": 2500,
+      "image": "Mockups/tank top black (E)/womens-micro-rib-tank-top-solid-black-blend-front-6aa56282abc3e.png",
+      "description": "The Embroidery Collection — Tank (Black)",
+      "_hero": "front"
+    },
+    "embroidered-tank-navy": {
+      "name": "Embroidered Tank — Navy",
+      "price": 2500,
+      "image": "Mockups/tank top navy (E)/womens-micro-rib-tank-top-solid-navy-blend-front-6aa562f27b624.png",
+      "description": "The Embroidery Collection — Tank (Navy)",
+      "_hero": "front"
+    },
+    "embroidered-tank-white": {
+      "name": "Embroidered Tank — White",
+      "price": 2500,
+      "image": "Mockups/tank top white (E)/womens-micro-rib-tank-top-solid-white-blend-front-6aa562c58f37f.png",
+      "description": "The Embroidery Collection — Tank (White)",
+      "_hero": "front"
+    },
+    "embroidered-crop-top-black": {
+      "name": "Embroidered Crop Top — Black",
+      "price": 2500,
+      "image": "Mockups/crop top black (E)/womens-crop-top-black-front-6aa55dcc9bda5.png",
+      "description": "The Embroidery Collection — Crop Top (Black)",
+      "_hero": "front"
+    },
+    "embroidered-crop-top-white": {
+      "name": "Embroidered Crop Top — White",
+      "price": 2500,
+      "image": "Mockups/crop top white (E)/womens-crop-top-white-front-6aa55d83c2d4b.png",
+      "description": "The Embroidery Collection — Crop Top (White)",
+      "_hero": "front"
     }
   }
 }

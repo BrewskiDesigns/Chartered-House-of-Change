@@ -236,10 +236,10 @@ main {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* ===== COLLECTION TILES (home page navigation into the 4 collections) ===== */
+/* ===== COLLECTION TILES (home page navigation into the collections) ===== */
 .collection-tiles {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 26px;
     max-width: 1200px;
     margin: 10px auto 0;

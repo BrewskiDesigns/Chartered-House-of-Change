@@ -55,21 +55,42 @@
       "price": 2500,
       "image": "Mockups/stars crop top black/womens-crop-top-black-front-6aa560c71939b.png",
       "description": "Featured — Stars Crop Top (Black)",
-      "_hero": "front"
+      "_hero": "front",
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ]
     },
     "stars-crop-top-white": {
       "name": "Stars Crop Top — White",
       "price": 2500,
       "image": "Mockups/stars crop top white/womens-crop-top-white-front-6aa55efc374dd.png",
       "description": "Featured — Stars Crop Top (White)",
-      "_hero": "front"
+      "_hero": "front",
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ]
     },
     "stars-crop-top-light-pink": {
       "name": "Stars Crop Top — Light Pink",
       "price": 2500,
       "image": "Mockups/stars crop top light pink/womens-crop-top-bubblegum-front-6aa56112c1eeb.png",
       "description": "Featured — Stars Crop Top (Light Pink)",
-      "_hero": "front"
+      "_hero": "front",
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ]
     },
     "wax-tee-black": {
       "name": "Wax Seal Tee — Black",
@@ -97,63 +118,132 @@
       "price": 4000,
       "image": "Mockups/gym sweat black/unisex-premium-sweatshirt-black-front-6aa565f77dd9b.png",
       "description": "The Gym Collection — Sweatshirt (Black)",
-      "_hero": "front"
+      "_hero": "front",
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "2XL"
+      ]
     },
     "gym-sweatshirt-navy": {
       "name": "Gym Sweatshirt — Navy",
       "price": 4000,
       "image": "Mockups/gym sweat navy/unisex-premium-sweatshirt-navy-blazer-front-6aa56630b324b.png",
       "description": "The Gym Collection — Sweatshirt (Navy)",
-      "_hero": "front"
+      "_hero": "front",
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "2XL"
+      ]
     },
     "gym-sweatshirt-white": {
       "name": "Gym Sweatshirt — White",
       "price": 4000,
       "image": "Mockups/gym sweat white/unisex-premium-sweatshirt-white-front-6aa56663b9a01.png",
       "description": "The Gym Collection — Sweatshirt (White)",
-      "_hero": "front"
+      "_hero": "front",
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "2XL"
+      ]
     },
     "gym-tank-black": {
       "name": "Gym Tank — Black",
       "price": 3500,
       "image": "Mockups/gym tank top black/womens-micro-rib-tank-top-solid-black-blend-front-6aa566a5a814d.png",
       "description": "The Gym Collection — Tank (Black)",
-      "_hero": "front"
+      "_hero": "front",
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "2XL"
+      ]
     },
     "gym-tank-navy": {
       "name": "Gym Tank — Navy",
       "price": 3500,
       "image": "Mockups/gym tank top navy/womens-micro-rib-tank-top-solid-navy-blend-front-6aa566cd32aed.png",
       "description": "The Gym Collection — Tank (Navy)",
-      "_hero": "front"
+      "_hero": "front",
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "2XL"
+      ]
     },
     "gym-tank-white": {
       "name": "Gym Tank — White",
       "price": 3500,
       "image": "Mockups/gym tank top white/womens-micro-rib-tank-top-solid-white-blend-front-6aa566f2a68be.png",
       "description": "The Gym Collection — Tank (White)",
-      "_hero": "front"
+      "_hero": "front",
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "2XL"
+      ]
     },
     "gym-vest-black": {
       "name": "Gym Vest — Black",
       "price": 3500,
       "image": "Mockups/gym tee black/unisex-staple-tank-top-black-front-6aa564e7018bc.png",
       "description": "The Gym Collection — Vest (Black)",
-      "_hero": "front"
+      "_hero": "front",
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "2XL"
+      ]
     },
     "gym-vest-navy": {
       "name": "Gym Vest — Navy",
       "price": 3500,
       "image": "Mockups/gym tee navy/unisex-staple-tank-top-navy-front-6aa5650a18f4c.png",
       "description": "The Gym Collection — Vest (Navy)",
-      "_hero": "front"
+      "_hero": "front",
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "2XL"
+      ]
     },
     "gym-vest-white": {
       "name": "Gym Vest — White",
       "price": 3500,
       "image": "Mockups/gym tee white/unisex-staple-tank-top-white-front-6aa5646a44dae.png",
       "description": "The Gym Collection — Vest (White)",
-      "_hero": "front"
+      "_hero": "front",
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "2XL"
+      ]
     },
     "embroidered-tee-black": {
       "name": "Embroidered Tee — Black",
@@ -181,35 +271,73 @@
       "price": 2500,
       "image": "Mockups/tank top black (E)/womens-micro-rib-tank-top-solid-black-blend-front-6aa56282abc3e.png",
       "description": "The Embroidery Collection — Tank (Black)",
-      "_hero": "front"
+      "_hero": "front",
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "2XL"
+      ]
     },
     "embroidered-tank-navy": {
       "name": "Embroidered Tank — Navy",
       "price": 2500,
       "image": "Mockups/tank top navy (E)/womens-micro-rib-tank-top-solid-navy-blend-front-6aa562f27b624.png",
       "description": "The Embroidery Collection — Tank (Navy)",
-      "_hero": "front"
+      "_hero": "front",
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "2XL"
+      ]
     },
     "embroidered-tank-white": {
       "name": "Embroidered Tank — White",
       "price": 2500,
       "image": "Mockups/tank top white (E)/womens-micro-rib-tank-top-solid-white-blend-front-6aa562c58f37f.png",
       "description": "The Embroidery Collection — Tank (White)",
-      "_hero": "front"
+      "_hero": "front",
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "2XL"
+      ]
     },
     "embroidered-crop-top-black": {
       "name": "Embroidered Crop Top — Black",
       "price": 2500,
       "image": "Mockups/crop top black (E)/womens-crop-top-black-front-6aa55dcc9bda5.png",
       "description": "The Embroidery Collection — Crop Top (Black)",
-      "_hero": "front"
+      "_hero": "front",
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ]
     },
     "embroidered-crop-top-white": {
       "name": "Embroidered Crop Top — White",
       "price": 2500,
       "image": "Mockups/crop top white (E)/womens-crop-top-white-front-6aa55d83c2d4b.png",
       "description": "The Embroidery Collection — Crop Top (White)",
-      "_hero": "front"
+      "_hero": "front",
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ]
     }
   }
 }

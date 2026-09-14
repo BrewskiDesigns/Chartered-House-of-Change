@@ -565,6 +565,9 @@ footer a:hover { color: var(--gold); }
     grid-template-columns: repeat(5, 1fr);
     gap: 8px;
 }
+/* Products with a size range other than the standard 5 (e.g. XS-2XL) */
+.size-grid.cols-6 { grid-template-columns: repeat(6, 1fr); }
+.size-grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
 .size-grid button {
     padding: 14px 0;
     background: var(--white);
@@ -611,7 +614,9 @@ footer a:hover { color: var(--gold); }
     cursor: not-allowed;
 }
 @media (max-width: 420px) {
-    .size-grid { grid-template-columns: repeat(3, 1fr); }
+    .size-grid,
+    .size-grid.cols-6,
+    .size-grid.cols-4 { grid-template-columns: repeat(3, 1fr); }
 }
 
 /* ===== IMAGE LIGHTBOX ===== */

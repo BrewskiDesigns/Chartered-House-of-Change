@@ -216,12 +216,16 @@ document.querySelectorAll('.product').forEach(function (product) {
     }
 
     // ----- Size picker: pick size, then add to cart -----
+    // Each product's real orderable sizes come from its own data-item-sizes
+    // attribute (comma-separated). Products without one fall back to the
+    // site's standard range — most garments use this default.
+    var DEFAULT_SIZES = ['S', 'M', 'L', 'XL', '2XL'];
     var sizeOverlay = document.getElementById('sizeOverlay');
     if (sizeOverlay) {
         var nameEl = document.getElementById('sizeProductName');
         var sizeCloseBtn = document.getElementById('sizeClose');
         var confirmBtn = document.getElementById('sizeConfirm');
-        var sizeButtons = document.querySelectorAll('.size-grid button');
+        var sizeGrid = document.querySelector('.size-grid');
         var activeBtn = null;
         var chosenSize = null;
 
@@ -232,10 +236,19 @@ document.querySelectorAll('.product').forEach(function (product) {
             });
         });
 
+        function renderSizeGrid(sizes) {
+            sizeGrid.className = 'size-grid' + (sizes.length !== 5 ? ' cols-' + sizes.length : '');
+            sizeGrid.innerHTML = sizes.map(function (s) {
+                return '<button data-size="' + s + '">' + s + '</button>';
+            }).join('');
+        }
+
         function openSize(btn) {
             activeBtn = btn;
             chosenSize = null;
-            sizeButtons.forEach(function (b) { b.classList.remove('selected'); });
+            var sizesAttr = btn.getAttribute('data-item-sizes');
+            var sizes = sizesAttr ? sizesAttr.split(',').map(function (s) { return s.trim(); }) : DEFAULT_SIZES;
+            renderSizeGrid(sizes);
             confirmBtn.disabled = true;
             nameEl.textContent = btn.getAttribute('data-item-name') || 'Choose a Size';
             sizeOverlay.classList.add('open');
@@ -245,13 +258,15 @@ document.querySelectorAll('.product').forEach(function (product) {
             activeBtn = null; chosenSize = null;
         }
 
-        sizeButtons.forEach(function (sizeBtn) {
-            sizeBtn.addEventListener('click', function () {
-                chosenSize = sizeBtn.getAttribute('data-size');
-                sizeButtons.forEach(function (b) { b.classList.remove('selected'); });
-                sizeBtn.classList.add('selected');
-                confirmBtn.disabled = false;
-            });
+        // Size buttons are rebuilt per product, so listen on the container
+        // (event delegation) rather than binding each button individually.
+        sizeGrid.addEventListener('click', function (e) {
+            var sizeBtn = e.target.closest('button[data-size]');
+            if (!sizeBtn) return;
+            chosenSize = sizeBtn.getAttribute('data-size');
+            sizeGrid.querySelectorAll('button').forEach(function (b) { b.classList.remove('selected'); });
+            sizeBtn.classList.add('selected');
+            confirmBtn.disabled = false;
         });
 
         confirmBtn.addEventListener('click', function () {

@@ -74,6 +74,7 @@
                 <p class="product-price">£40.00</p>
                 <button class="add-btn"
                     data-item-id="gym-sweatshirt-black"
+                    data-item-sizes="S,M,L,XL,2XL"
                     data-item-name="Gym Sweatshirt — Black"
                     data-item-price="40.00"
                     data-item-image="Mockups/gym sweat black/unisex-premium-sweatshirt-black-front-6aa565f77dd9b.png">
@@ -94,6 +95,7 @@
                 <p class="product-price">£40.00</p>
                 <button class="add-btn"
                     data-item-id="gym-sweatshirt-navy"
+                    data-item-sizes="S,M,L,XL,2XL"
                     data-item-name="Gym Sweatshirt — Navy"
                     data-item-price="40.00"
                     data-item-image="Mockups/gym sweat navy/unisex-premium-sweatshirt-navy-blazer-front-6aa56630b324b.png">
@@ -114,6 +116,7 @@
                 <p class="product-price">£40.00</p>
                 <button class="add-btn"
                     data-item-id="gym-sweatshirt-white"
+                    data-item-sizes="S,M,L,XL,2XL"
                     data-item-name="Gym Sweatshirt — White"
                     data-item-price="40.00"
                     data-item-image="Mockups/gym sweat white/unisex-premium-sweatshirt-white-front-6aa56663b9a01.png">
@@ -132,6 +135,7 @@
                 <p class="product-price">£35.00</p>
                 <button class="add-btn"
                     data-item-id="gym-tank-black"
+                    data-item-sizes="XS,S,M,L,XL,2XL"
                     data-item-name="Gym Tank — Black"
                     data-item-price="35.00"
                     data-item-image="Mockups/gym tank top black/womens-micro-rib-tank-top-solid-black-blend-front-6aa566a5a814d.png">
@@ -150,6 +154,7 @@
                 <p class="product-price">£35.00</p>
                 <button class="add-btn"
                     data-item-id="gym-tank-navy"
+                    data-item-sizes="XS,S,M,L,XL,2XL"
                     data-item-name="Gym Tank — Navy"
                     data-item-price="35.00"
                     data-item-image="Mockups/gym tank top navy/womens-micro-rib-tank-top-solid-navy-blend-front-6aa566cd32aed.png">
@@ -168,6 +173,7 @@
                 <p class="product-price">£35.00</p>
                 <button class="add-btn"
                     data-item-id="gym-tank-white"
+                    data-item-sizes="XS,S,M,L,XL,2XL"
                     data-item-name="Gym Tank — White"
                     data-item-price="35.00"
                     data-item-image="Mockups/gym tank top white/womens-micro-rib-tank-top-solid-white-blend-front-6aa566f2a68be.png">
@@ -186,6 +192,7 @@
                 <p class="product-price">£35.00</p>
                 <button class="add-btn"
                     data-item-id="gym-vest-black"
+                    data-item-sizes="XS,S,M,L,XL,2XL"
                     data-item-name="Gym Vest — Black"
                     data-item-price="35.00"
                     data-item-image="Mockups/gym tee black/unisex-staple-tank-top-black-front-6aa564e7018bc.png">
@@ -204,6 +211,7 @@
                 <p class="product-price">£35.00</p>
                 <button class="add-btn"
                     data-item-id="gym-vest-navy"
+                    data-item-sizes="XS,S,M,L,XL,2XL"
                     data-item-name="Gym Vest — Navy"
                     data-item-price="35.00"
                     data-item-image="Mockups/gym tee navy/unisex-staple-tank-top-navy-front-6aa5650a18f4c.png">
@@ -222,6 +230,7 @@
                 <p class="product-price">£35.00</p>
                 <button class="add-btn"
                     data-item-id="gym-vest-white"
+                    data-item-sizes="XS,S,M,L,XL,2XL"
                     data-item-name="Gym Vest — White"
                     data-item-price="35.00"
                     data-item-image="Mockups/gym tee white/unisex-staple-tank-top-white-front-6aa5646a44dae.png">
@@ -257,13 +266,7 @@
         <p class="eyebrow">Select</p>
         <h3 id="sizeProductName">Choose a Size</h3>
         <p class="prompt">Choose a size</p>
-        <div class="size-grid">
-            <button data-size="S">S</button>
-            <button data-size="M">M</button>
-            <button data-size="L">L</button>
-            <button data-size="XL">XL</button>
-            <button data-size="2XL">2XL</button>
-        </div>
+        <div class="size-grid"></div>
         <button class="size-confirm" id="sizeConfirm" disabled>Confirm</button>
     </div>
 </div>
@@ -302,7 +305,7 @@
         <button class="close" aria-label="Close">&times;</button>
         <p class="eyebrow">Fit Guide</p>
         <h3>Sizing</h3>
-        <p>All garments are unisex. Measurements are of the garment itself, laid flat. If you're between sizes or prefer a relaxed fit, size up.</p>
+        <p>Most garments are unisex; a few noted below are women's-cut. Measurements are of the garment itself, laid flat. If you're between sizes or prefer a relaxed fit, size up.</p>
 
         <h4>Tees</h4>
         <table class="size-table">
@@ -344,6 +347,48 @@
             </tbody>
         </table>
         <p class="size-cap">Classic fit with side slits.</p>
+
+        <h4>Crop Tops</h4>
+        <div class="note"><strong>Women's cut.</strong> Sizes run XS–XL — no 2XL available.</div>
+        <table class="size-table">
+            <thead><tr><th>Size</th><th>XS</th><th>S</th><th>M</th><th>L</th><th>XL</th></tr></thead>
+            <tbody>
+                <tr><td>Chest (in)</td><td>18¾</td><td>19¾</td><td>20⅝</td><td>21⅝</td><td>22⅝</td></tr>
+                <tr><td>Length (in)</td><td>17⅜</td><td>17¾</td><td>18¼</td><td>18¾</td><td>19⅛</td></tr>
+            </tbody>
+        </table>
+        <p class="size-cap">Cropped length, dropped shoulder.</p>
+
+        <h4>Gym Tank</h4>
+        <div class="note"><strong>Women's cut.</strong> Micro-rib fabric, fitted through the body.</div>
+        <table class="size-table">
+            <thead><tr><th>Size</th><th>XS</th><th>S</th><th>M</th><th>L</th><th>XL</th><th>2XL</th></tr></thead>
+            <tbody>
+                <tr><td>Chest (in)</td><td>13¼</td><td>14</td><td>14¾</td><td>15¾</td><td>16¾</td><td>17¾</td></tr>
+                <tr><td>Length (in)</td><td>12¼</td><td>12⅝</td><td>13</td><td>13⅜</td><td>13¾</td><td>14¼</td></tr>
+            </tbody>
+        </table>
+        <p class="size-cap">Spaghetti strap, fitted through the body.</p>
+
+        <h4>Gym Vest</h4>
+        <table class="size-table">
+            <thead><tr><th>Size</th><th>XS</th><th>S</th><th>M</th><th>L</th><th>XL</th><th>2XL</th></tr></thead>
+            <tbody>
+                <tr><td>Chest (in)</td><td>16¼</td><td>18¼</td><td>20¼</td><td>22¼</td><td>24¼</td><td>26¼</td></tr>
+                <tr><td>Length (in)</td><td>26</td><td>27</td><td>28</td><td>29</td><td>30</td><td>31</td></tr>
+            </tbody>
+        </table>
+        <p class="size-cap">Unisex fit, side-seamed.</p>
+
+        <h4>Gym Sweatshirt</h4>
+        <table class="size-table">
+            <thead><tr><th>Size</th><th>S</th><th>M</th><th>L</th><th>XL</th><th>2XL</th></tr></thead>
+            <tbody>
+                <tr><td>Chest (in)</td><td>20</td><td>21</td><td>23</td><td>25</td><td>26½</td></tr>
+                <tr><td>Length (in)</td><td>27</td><td>28</td><td>29</td><td>30</td><td>31</td></tr>
+            </tbody>
+        </table>
+        <p class="size-cap">Relaxed unisex fit.</p>
 
         <p class="size-cap" style="margin-top:18px;">Measurements are approximate and may vary by up to 1&quot; due to the made-to-order nature of each garment. Questions about fit? Email <a href="mailto:ethan@chocstudio.com">ethan@chocstudio.com</a>.</p>
     </div>

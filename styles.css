@@ -88,14 +88,23 @@ body::after {
 }
 .top-bar .gold-text { color: var(--gold); }
 
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    row-gap: 14px;
+}
+
 .brand-mark {
-    font-family: var(--serif);
-    font-size: 19px;
-    font-weight: 400;
-    letter-spacing: .06em;
-    color: var(--ink);
-    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
     flex-shrink: 0;
+}
+.brand-mark img {
+    height: 30px;
+    width: auto;
+    display: block;
 }
 
 .site-nav {
@@ -103,7 +112,7 @@ body::after {
     gap: 32px;
     list-style: none;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
 }
 .site-nav a {
     font-size: 10.5px;
@@ -890,9 +899,13 @@ footer a:hover { color: var(--gold); }
     .top-bar {
         flex-wrap: wrap;
         row-gap: 16px;
+        justify-content: center;
+    }
+    .header-left {
+        width: 100%;
+        justify-content: center;
     }
     .site-nav {
-        order: 3;
         width: 100%;
         justify-content: center;
         gap: 22px;

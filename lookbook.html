@@ -147,11 +147,13 @@
         { type: 'look', img: 'Mockups/crop top black (E)/womens-crop-top-black-front-6aa55dcc9bda5.png', num: 'Look 08', name: 'Embroidered Crop Top &mdash; Black', coll: 'Embroidery' }
     ];
     var BACKCOVER = { type: 'backcover' };
+    var BLANK = { type: 'blank' };
 
-    // Cover is its own single page. Everything after it reads as a
-    // spread of two facing pages, paired in order: (Intro, Idea),
-    // (Drop1, Look01), (Look02, Look03) ... ending on (Look08, BackCover).
-    var PAGES = DOCS.concat(LOOKS).concat([BACKCOVER]);
+    // Cover is its own single page. Opening it reveals a blank inside
+    // cover on the left with the Introduction alone on the right, then
+    // every turn after that is a real spread of two facing pages:
+    // (Idea, Drop1), (Look01, Look02) ... ending on (Look08, BackCover).
+    var PAGES = [BLANK].concat(DOCS).concat(LOOKS).concat([BACKCOVER]);
     var SPREADS = [];
     for (var p = 0; p < PAGES.length; p += 2) {
         SPREADS.push({ left: PAGES[p], right: PAGES[p + 1] });
@@ -180,7 +182,9 @@
     var animating = false;
 
     function pageHTML(page) {
-        if (!page) return '';
+        if (!page || page.type === 'blank') {
+            return '<div class="lb-paper lb-blank"></div>';
+        }
         if (page.type === 'doc') {
             return '<div class="lb-paper lb-doc"><img src="' + page.img + '" alt="' + page.alt + '" /><div class="lb-overlay"></div></div>';
         }
@@ -212,7 +216,8 @@
             prevBtn.disabled = true;
             nextBtn.disabled = false;
         } else {
-            counter.textContent = 'Pages ' + pad(spreadIndex * 2 + 1) + '–' + pad(spreadIndex * 2 + 2) + ' / ' + pad(SPREADS.length * 2);
+            var lastPageNum = Math.min(spreadIndex * 2 + 2, PAGES.length);
+            counter.textContent = 'Pages ' + pad(spreadIndex * 2 + 1) + '–' + pad(lastPageNum) + ' / ' + pad(PAGES.length);
             prevBtn.disabled = false;
             nextBtn.disabled = spreadIndex === SPREADS.length - 1;
         }

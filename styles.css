@@ -905,6 +905,7 @@ footer a:hover { color: var(--gold); }
     gap: 28px; padding: 10px 24px 80px;
 }
 .lookbook-stage {
+    width: 100%;
     perspective: 2400px;
     perspective-origin: 50% 45%;
 }
@@ -913,15 +914,16 @@ footer a:hover { color: var(--gold); }
     --paper-ink: #18140f;
     --paper-ink-soft: #5b5344;
     position: relative;
-    width: min(88vw, 600px);
+    width: min(100%, 1200px, calc(82vh * 1.4142));
     aspect-ratio: 1.4142;
+    margin: 0 auto;
 }
 
 /* ---- closed cover: a single page, sits on its own ---- */
 .lb-cover-box {
     position: absolute; top: 50%; left: 50%;
     transform: translate(-50%, -50%);
-    width: min(70vw, 300px);
+    width: 50%;
     aspect-ratio: 0.7071;
     z-index: 5;
     cursor: pointer;

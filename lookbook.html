@@ -50,12 +50,37 @@
     <section class="lookbook">
         <div class="lookbook-stage">
             <div class="lookbook-book" id="lbBook">
-                <div class="lb-spine"></div>
+
+                <!-- closed-book cover, shown alone -->
+                <div class="lb-cover-box" id="lbCoverBox">
+                    <img src="CHOC logo white.png" alt="CHOC" />
+                    <div class="lb-eyebrow">Lookbook</div>
+                    <h1>Chartered House <em>of</em> Change</h1>
+                    <div class="lb-rule"></div>
+                    <div class="lb-year">MMXXVI</div>
+                    <div class="lb-hint">Tap to open</div>
+                </div>
+
+                <!-- open double-page spread -->
+                <div class="lb-spread" id="lbSpread" hidden>
+                    <div class="lb-spine"></div>
+                    <div class="lb-slot left" id="lbSlotLeft"></div>
+                    <div class="lb-slot right" id="lbSlotRight"></div>
+                    <div class="lb-flip lb-flip-fwd" id="lbFlipFwd">
+                        <div class="lb-face front" id="lbFlipFwdFront"></div>
+                        <div class="lb-face back" id="lbFlipFwdBack"></div>
+                    </div>
+                    <div class="lb-flip lb-flip-back" id="lbFlipBack">
+                        <div class="lb-face front" id="lbFlipBackFront"></div>
+                        <div class="lb-face back" id="lbFlipBackBack"></div>
+                    </div>
+                </div>
+
             </div>
         </div>
         <div class="lookbook-controls">
             <button id="lbPrev" aria-label="Previous page">&#8249;</button>
-            <span class="lookbook-counter" id="lbCounter">01 / 10</span>
+            <span class="lookbook-counter" id="lbCounter">Cover</span>
             <button id="lbNext" aria-label="Next page">&#8250;</button>
         </div>
     </section>
@@ -106,10 +131,12 @@
 <script src="site.js"></script>
 <script>
 (function () {
-    var PAGES = [
+    var DOCS = [
         { type: 'doc', img: 'look book pages/pg1.png', alt: 'Introduction' },
         { type: 'doc', img: 'look book pages/pg2.png', alt: 'The Idea' },
-        { type: 'doc', img: 'look book pages/pg 3.png', alt: 'Drop 1' },
+        { type: 'doc', img: 'look book pages/pg 3.png', alt: 'Drop 1' }
+    ];
+    var LOOKS = [
         { type: 'look', img: 'Mockups/stars black/unisex-classic-tee-black-front-6aa55e1cf021e.png', num: 'Look 01', name: 'Stars Tee &mdash; Black', coll: 'Featured' },
         { type: 'look', img: 'Mockups/wax white/unisex-classic-tee-white-front-6aa55cbc2fab3.png', num: 'Look 02', name: 'Wax Seal Tee &mdash; White', coll: 'Featured' },
         { type: 'look', img: 'Mockups/gym sweat navy/unisex-premium-sweatshirt-navy-blazer-front-6aa56630b324b.png', num: 'Look 03', name: 'Gym Sweatshirt &mdash; Navy', coll: 'Gym' },
@@ -119,125 +146,157 @@
         { type: 'look', img: 'Mockups/gym tank top black/womens-micro-rib-tank-top-solid-black-blend-front-6aa566a5a814d.png', num: 'Look 07', name: 'Gym Tank &mdash; Black', coll: 'Gym' },
         { type: 'look', img: 'Mockups/crop top black (E)/womens-crop-top-black-front-6aa55dcc9bda5.png', num: 'Look 08', name: 'Embroidered Crop Top &mdash; Black', coll: 'Embroidery' }
     ];
+    var BACKCOVER = { type: 'backcover' };
+
+    // Cover is its own single page. Everything after it reads as a
+    // spread of two facing pages, paired in order: (Intro, Idea),
+    // (Drop1, Look01), (Look02, Look03) ... ending on (Look08, BackCover).
+    var PAGES = DOCS.concat(LOOKS).concat([BACKCOVER]);
+    var SPREADS = [];
+    for (var p = 0; p < PAGES.length; p += 2) {
+        SPREADS.push({ left: PAGES[p], right: PAGES[p + 1] });
+    }
 
     var book = document.getElementById('lbBook');
     if (!book) return;
-    var total = PAGES.length + 2;
-    var active = 0;
-    var leaves = [];
 
-    function wrap(cls, faceCls, html) {
-        var d = document.createElement('div');
-        d.className = 'lb-face ' + faceCls;
-        var inner = document.createElement('div');
-        inner.className = 'lb-face-inner ' + cls;
-        inner.innerHTML = html;
-        d.appendChild(inner);
-        return d;
-    }
-    function coverFace() {
-        return wrap('lb-cover', 'front',
-            '<img src="CHOC logo white.png" alt="CHOC" />' +
-            '<div class="lb-eyebrow">Lookbook</div>' +
-            '<h1>Chartered House <em>of</em> Change</h1>' +
-            '<div class="lb-rule"></div>' +
-            '<div class="lb-year">MMXXVI</div>' +
-            '<div class="lb-hint">Tap to open</div>');
-    }
-    function docFace(page) {
-        return wrap('lb-doc', 'front',
-            '<img src="' + page.img + '" alt="' + page.alt + '" />');
-    }
-    function lookFace(look) {
-        return wrap('lb-page', 'front',
-            '<div class="lb-photo"><img src="' + look.img + '" alt="' + look.name + '" /></div>' +
-            '<div class="lb-caption">' +
-                '<div class="lb-num">' + look.num + '</div>' +
-                '<div class="lb-name">' + look.name + '</div>' +
-                '<div class="lb-coll">' + look.coll + ' Collection</div>' +
-            '</div>');
-    }
-    function backCoverFace() {
-        return wrap('lb-backcover', 'front',
-            '<img src="CHOC logo white.png" alt="CHOC" />' +
-            '<p>It&rsquo;s what you want</p>' +
-            '<div class="lb-site">chocstudio.com</div>');
-    }
-    function backFace() {
-        return wrap('', 'back', '<div class="lb-paper-back"></div>');
-    }
-
-    for (var i = 0; i < total; i++) {
-        var leaf = document.createElement('div');
-        leaf.className = 'lb-leaf';
-        leaf.style.zIndex = total - i;
-
-        var front;
-        if (i === 0) {
-            front = coverFace();
-        } else if (i === total - 1) {
-            front = backCoverFace();
-        } else {
-            var page = PAGES[i - 1];
-            front = page.type === 'doc' ? docFace(page) : lookFace(page);
-        }
-
-        leaf.appendChild(front);
-        leaf.appendChild(backFace());
-        book.appendChild(leaf);
-        leaves.push(leaf);
-
-        (function (idx) {
-            leaf.addEventListener('transitionend', function (e) {
-                if (e.propertyName !== 'transform') return;
-                if (idx < active) leaf.style.zIndex = -1;
-                else leaf.style.zIndex = total - idx;
-                leaf.classList.remove('is-turning');
-            });
-        })(i);
-    }
-
-    var leftZone = document.createElement('div');
-    leftZone.className = 'lb-zone left';
-    var rightZone = document.createElement('div');
-    rightZone.className = 'lb-zone right';
-    book.appendChild(leftZone);
-    book.appendChild(rightZone);
+    var coverBox = document.getElementById('lbCoverBox');
+    var spreadBox = document.getElementById('lbSpread');
+    var slotLeft = document.getElementById('lbSlotLeft');
+    var slotRight = document.getElementById('lbSlotRight');
+    var flipFwd = document.getElementById('lbFlipFwd');
+    var flipFwdFront = document.getElementById('lbFlipFwdFront');
+    var flipFwdBack = document.getElementById('lbFlipFwdBack');
+    var flipBack = document.getElementById('lbFlipBack');
+    var flipBackFront = document.getElementById('lbFlipBackFront');
+    var flipBackBack = document.getElementById('lbFlipBackBack');
 
     var prevBtn = document.getElementById('lbPrev');
     var nextBtn = document.getElementById('lbNext');
     var counter = document.getElementById('lbCounter');
 
+    var view = 'cover';   // 'cover' | 'spread'
+    var spreadIndex = 0;
+    var animating = false;
+
+    function pageHTML(page) {
+        if (!page) return '';
+        if (page.type === 'doc') {
+            return '<div class="lb-paper lb-doc"><img src="' + page.img + '" alt="' + page.alt + '" /><div class="lb-overlay"></div></div>';
+        }
+        if (page.type === 'look') {
+            return '<div class="lb-paper lb-page">' +
+                '<div class="lb-photo"><img src="' + page.img + '" alt="' + page.name + '" /><div class="lb-overlay"></div></div>' +
+                '<div class="lb-caption">' +
+                    '<div class="lb-num">' + page.num + '</div>' +
+                    '<div class="lb-name">' + page.name + '</div>' +
+                    '<div class="lb-coll">' + page.coll + ' Collection</div>' +
+                '</div></div>';
+        }
+        return '<div class="lb-backcover">' +
+            '<img src="CHOC logo white.png" alt="CHOC" />' +
+            '<p>It&rsquo;s what you want</p>' +
+            '<div class="lb-site">chocstudio.com</div></div>';
+    }
+
+    function setSpread(i) {
+        spreadIndex = i;
+        slotLeft.innerHTML = pageHTML(SPREADS[i].left);
+        slotRight.innerHTML = pageHTML(SPREADS[i].right);
+    }
+
     function pad(n) { return n < 10 ? '0' + n : '' + n; }
     function refresh() {
-        counter.textContent = pad(active) + ' / ' + pad(total - 1);
-        prevBtn.disabled = active === 0;
-        nextBtn.disabled = active === total - 1;
+        if (view === 'cover') {
+            counter.textContent = 'Cover';
+            prevBtn.disabled = true;
+            nextBtn.disabled = false;
+        } else {
+            counter.textContent = 'Pages ' + pad(spreadIndex * 2 + 1) + '–' + pad(spreadIndex * 2 + 2) + ' / ' + pad(SPREADS.length * 2);
+            prevBtn.disabled = false;
+            nextBtn.disabled = spreadIndex === SPREADS.length - 1;
+        }
+    }
+
+    function openBook() {
+        view = 'spread';
+        setSpread(0);
+        coverBox.classList.add('is-hidden');
+        spreadBox.hidden = false;
+        requestAnimationFrame(function () { spreadBox.classList.add('is-visible'); });
+        refresh();
+    }
+    function closeBook() {
+        view = 'cover';
+        spreadBox.classList.remove('is-visible');
+        coverBox.classList.remove('is-hidden');
+        setTimeout(function () { spreadBox.hidden = true; }, 400);
+        refresh();
+    }
+
+    function turnForward() {
+        if (animating || spreadIndex >= SPREADS.length - 1) return;
+        animating = true;
+        var next = spreadIndex + 1;
+        flipFwdFront.innerHTML = pageHTML(SPREADS[spreadIndex].right);
+        flipFwdBack.innerHTML = pageHTML(SPREADS[next].left);
+        flipFwd.style.zIndex = 20;
+        flipFwd.classList.add('is-turning');
+        flipFwd.style.transition = 'none';
+        flipFwd.style.transform = 'rotateY(0deg)';
+        void flipFwd.offsetWidth;
+        flipFwd.style.transition = '';
+        requestAnimationFrame(function () { flipFwd.style.transform = 'rotateY(-180deg)'; });
+
+        flipFwd.addEventListener('transitionend', function done(e) {
+            if (e.propertyName !== 'transform') return;
+            flipFwd.removeEventListener('transitionend', done);
+            setSpread(next);
+            flipFwd.style.zIndex = -1;
+            flipFwd.classList.remove('is-turning');
+            animating = false;
+            refresh();
+        });
+    }
+
+    function turnBackward() {
+        if (animating) return;
+        if (view === 'spread' && spreadIndex === 0) { closeBook(); return; }
+        if (view !== 'spread') return;
+        animating = true;
+        var prevIdx = spreadIndex - 1;
+        flipBackFront.innerHTML = pageHTML(SPREADS[spreadIndex].left);
+        flipBackBack.innerHTML = pageHTML(SPREADS[prevIdx].right);
+        flipBack.style.zIndex = 20;
+        flipBack.classList.add('is-turning');
+        flipBack.style.transition = 'none';
+        flipBack.style.transform = 'rotateY(0deg)';
+        void flipBack.offsetWidth;
+        flipBack.style.transition = '';
+        requestAnimationFrame(function () { flipBack.style.transform = 'rotateY(180deg)'; });
+
+        flipBack.addEventListener('transitionend', function done(e) {
+            if (e.propertyName !== 'transform') return;
+            flipBack.removeEventListener('transitionend', done);
+            setSpread(prevIdx);
+            flipBack.style.zIndex = -1;
+            flipBack.classList.remove('is-turning');
+            animating = false;
+            refresh();
+        });
     }
 
     function next() {
-        if (active >= total - 1) return;
-        var leaf = leaves[active];
-        leaf.style.zIndex = total + 5;
-        leaf.classList.add('is-turning');
-        requestAnimationFrame(function () { leaf.style.transform = 'rotateY(-178deg)'; });
-        active++;
-        refresh();
+        if (view === 'cover') openBook();
+        else turnForward();
     }
     function prev() {
-        if (active <= 0) return;
-        active--;
-        var leaf = leaves[active];
-        leaf.style.zIndex = total + 5;
-        leaf.classList.add('is-turning');
-        requestAnimationFrame(function () { leaf.style.transform = 'rotateY(0deg)'; });
-        refresh();
+        turnBackward();
     }
 
     nextBtn.addEventListener('click', next);
     prevBtn.addEventListener('click', prev);
-    rightZone.addEventListener('click', next);
-    leftZone.addEventListener('click', prev);
+    coverBox.addEventListener('click', openBook);
     document.addEventListener('keydown', function (e) {
         if (e.key === 'ArrowRight') next();
         if (e.key === 'ArrowLeft') prev();

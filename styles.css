@@ -77,6 +77,10 @@ body::after {
     grid-template-rows: auto 1fr auto;
     padding: 40px 48px;
 }
+/* Lookbook has 4 top-level sections instead of the usual 3 (header/hero/
+   content/footer), so the shared auto-1fr-auto rows would hand the hero
+   section the flexible row instead of the book. Give the book that row. */
+.page--lookbook { grid-template-rows: auto auto 1fr auto; }
 
 /* ===== SITE HEADER / NAV ===== */
 .top-bar {
@@ -340,6 +344,11 @@ main {
 .page-hero p {
     font-size: 13.5px; line-height: 1.9; color: var(--grey-700);
 }
+/* Tighter variant for pages where the content below needs the room (e.g. the lookbook) */
+.page-hero.compact { padding: 28px 20px 6px; }
+.page-hero.compact .eyebrow { margin-bottom: 10px; }
+.page-hero.compact h1 { font-size: clamp(26px, 4vw, 38px); margin-bottom: 14px; }
+.page-hero.compact .rule { margin-bottom: 14px; }
 
 /* ===== EMPTY / COMING SOON STATE (collection pages before products are added) ===== */
 .empty-state {
@@ -902,13 +911,28 @@ footer a:hover { color: var(--gold); }
 /* ===== LOOKBOOK ===== */
 .lookbook {
     display: flex; flex-direction: column; align-items: center;
-    gap: 28px; padding: 10px 24px 80px;
+    gap: 12px; padding: 0 24px 24px;
 }
 .lookbook-stage {
+    position: relative;
     width: 100%;
     perspective: 2400px;
     perspective-origin: 50% 45%;
 }
+.lookbook-arrow {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    width: 40px; height: 40px; border-radius: 50%;
+    border: 1px solid var(--grey-300);
+    background: var(--bone); color: var(--ink);
+    font-size: 17px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background .2s, border-color .2s, opacity .2s;
+    z-index: 30;
+}
+.lookbook-arrow.left { left: -6px; }
+.lookbook-arrow.right { right: -6px; }
+.lookbook-arrow:hover:not(:disabled) { border-color: var(--gold); color: var(--gold); }
+.lookbook-arrow:disabled { opacity: .3; cursor: default; }
 .lookbook-book {
     --paper: #f6f2e8;
     --paper-ink: #18140f;
@@ -1050,17 +1074,6 @@ footer a:hover { color: var(--gold); }
 .lb-caption .lb-coll {
     font-size: 8.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--paper-ink-soft); margin-top: 2px;
 }
-.lookbook-controls { display: flex; align-items: center; gap: 18px; }
-.lookbook-controls button {
-    width: 34px; height: 34px; border-radius: 50%;
-    border: 1px solid var(--grey-300);
-    background: none; color: var(--ink);
-    font-size: 15px; cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-    transition: background .2s, border-color .2s, opacity .2s;
-}
-.lookbook-controls button:hover:not(:disabled) { border-color: var(--gold); color: var(--gold); }
-.lookbook-controls button:disabled { opacity: .3; cursor: default; }
 .lookbook-counter {
     font-size: 11px; letter-spacing: .12em; color: var(--grey-500);
     min-width: 58px; text-align: center; font-variant-numeric: tabular-nums;

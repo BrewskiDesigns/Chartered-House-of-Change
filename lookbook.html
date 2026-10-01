@@ -129,32 +129,36 @@
 <script src="site.js"></script>
 <script>
 (function () {
+    // pageNum matches the actual filename each page was saved as
+    // (pg2.png is page 2, etc.) -- the inside front cover and the
+    // plain page after it fill in the two numbers before that, 0 and 1.
     var DOCS = [
-        { type: 'doc', img: 'look book pages/pg2.png', alt: 'Drop 1' },
-        { type: 'doc', img: 'look book pages/pg3.png', alt: 'Drop 2' },
-        { type: 'doc', img: 'look book pages/pg4.png', alt: 'Gym Association Drop' },
-        { type: 'doc', img: 'look book pages/pg5.png', alt: 'Fall/Winter Pre-Drop' },
-        { type: 'doc', img: 'look book pages/pg6.png', alt: 'Fall/Winter Drop' }
+        { type: 'doc', img: 'look book pages/pg2.png', alt: 'Drop 1', pageNum: 2 },
+        { type: 'doc', img: 'look book pages/pg3.png', alt: 'Drop 2', pageNum: 3 },
+        { type: 'doc', img: 'look book pages/pg4.png', alt: 'Gym Association Drop', pageNum: 4 },
+        { type: 'doc', img: 'look book pages/pg5.png', alt: 'Fall/Winter Pre-Drop', pageNum: 5 },
+        { type: 'doc', img: 'look book pages/pg6.png', alt: 'Fall/Winter Drop', pageNum: 6 }
     ];
     var LOOKS = [
-        { type: 'look', img: 'Mockups/stars black/unisex-classic-tee-black-front-6aa55e1cf021e.png', num: 'Look 01', name: 'Stars Tee &mdash; Black', coll: 'Featured' },
-        { type: 'look', img: 'Mockups/wax white/unisex-classic-tee-white-front-6aa55cbc2fab3.png', num: 'Look 02', name: 'Wax Seal Tee &mdash; White', coll: 'Featured' },
-        { type: 'look', img: 'Mockups/gym sweat navy/unisex-premium-sweatshirt-navy-blazer-front-6aa56630b324b.png', num: 'Look 03', name: 'Gym Sweatshirt &mdash; Navy', coll: 'Gym' },
-        { type: 'look', img: 'Mockups/tee navy (E)/unisex-classic-tee-navy-front-6a5bac4a3d6ae.png', num: 'Look 04', name: 'Embroidered Tee &mdash; Navy', coll: 'Embroidery' },
-        { type: 'look', img: 'Mockups/stars crop top light pink/womens-crop-top-bubblegum-front-6aa56112c1eeb.png', num: 'Look 05', name: 'Stars Crop Top &mdash; Light Pink', coll: 'Featured' },
-        { type: 'look', img: 'Mockups/Lake Como/unisex-essential-eco-cruiser-2.0-hoodie-black-back-6aa55cf1d2182.png', num: 'Look 06', name: 'Lake Como Hoodie', coll: 'Featured' },
-        { type: 'look', img: 'Mockups/gym tank top black/womens-micro-rib-tank-top-solid-black-blend-front-6aa566a5a814d.png', num: 'Look 07', name: 'Gym Tank &mdash; Black', coll: 'Gym' },
-        { type: 'look', img: 'Mockups/crop top black (E)/womens-crop-top-black-front-6aa55dcc9bda5.png', num: 'Look 08', name: 'Embroidered Crop Top &mdash; Black', coll: 'Embroidery' }
+        { type: 'look', img: 'Mockups/stars black/unisex-classic-tee-black-front-6aa55e1cf021e.png', num: 'Look 01', name: 'Stars Tee &mdash; Black', coll: 'Featured', pageNum: 7 },
+        { type: 'look', img: 'Mockups/wax white/unisex-classic-tee-white-front-6aa55cbc2fab3.png', num: 'Look 02', name: 'Wax Seal Tee &mdash; White', coll: 'Featured', pageNum: 8 },
+        { type: 'look', img: 'Mockups/gym sweat navy/unisex-premium-sweatshirt-navy-blazer-front-6aa56630b324b.png', num: 'Look 03', name: 'Gym Sweatshirt &mdash; Navy', coll: 'Gym', pageNum: 9 },
+        { type: 'look', img: 'Mockups/tee navy (E)/unisex-classic-tee-navy-front-6a5bac4a3d6ae.png', num: 'Look 04', name: 'Embroidered Tee &mdash; Navy', coll: 'Embroidery', pageNum: 10 },
+        { type: 'look', img: 'Mockups/stars crop top light pink/womens-crop-top-bubblegum-front-6aa56112c1eeb.png', num: 'Look 05', name: 'Stars Crop Top &mdash; Light Pink', coll: 'Featured', pageNum: 11 },
+        { type: 'look', img: 'Mockups/Lake Como/unisex-essential-eco-cruiser-2.0-hoodie-black-back-6aa55cf1d2182.png', num: 'Look 06', name: 'Lake Como Hoodie', coll: 'Featured', pageNum: 12 },
+        { type: 'look', img: 'Mockups/gym tank top black/womens-micro-rib-tank-top-solid-black-blend-front-6aa566a5a814d.png', num: 'Look 07', name: 'Gym Tank &mdash; Black', coll: 'Gym', pageNum: 13 },
+        { type: 'look', img: 'Mockups/crop top black (E)/womens-crop-top-black-front-6aa55dcc9bda5.png', num: 'Look 08', name: 'Embroidered Crop Top &mdash; Black', coll: 'Embroidery', pageNum: 14 }
     ];
-    var BACKCOVER = { type: 'backcover' };
-    var BLANK = { type: 'blank' };
+    var BACKCOVER = { type: 'backcover', pageNum: 15 };
+    var BLANK0 = { type: 'blank', pageNum: 0 };
+    var BLANK1 = { type: 'blank', pageNum: 1 };
 
     // Cover is its own single page. Opening it reveals the inside front
-    // cover (blank) facing a plain Page 1 (also blank), then every turn
+    // cover (page 0) facing a plain Page 1 (also blank), then every turn
     // after that is a spread of two facing pages: (Drop1, Drop2),
     // (GymDrop, FWPre-Drop), (FWDrop, Look01) ... ending on (Look08,
     // BackCover).
-    var PAGES = [BLANK, BLANK].concat(DOCS).concat(LOOKS).concat([BACKCOVER]);
+    var PAGES = [BLANK0, BLANK1].concat(DOCS).concat(LOOKS).concat([BACKCOVER]);
     var SPREADS = [];
     for (var p = 0; p < PAGES.length; p += 2) {
         SPREADS.push({ left: PAGES[p], right: PAGES[p + 1] });
@@ -217,8 +221,10 @@
             prevBtn.disabled = true;
             nextBtn.disabled = false;
         } else {
-            var lastPageNum = Math.min(spreadIndex * 2 + 2, PAGES.length);
-            counter.textContent = 'Pages ' + pad(spreadIndex * 2 + 1) + '–' + pad(lastPageNum) + ' / ' + pad(PAGES.length);
+            var spread = SPREADS[spreadIndex];
+            var rightPage = spread.right || spread.left;
+            var lastPageNum = PAGES[PAGES.length - 1].pageNum;
+            counter.textContent = 'Pages ' + pad(spread.left.pageNum) + '–' + pad(rightPage.pageNum) + ' / ' + pad(lastPageNum);
             prevBtn.disabled = false;
             nextBtn.disabled = spreadIndex === SPREADS.length - 1;
         }

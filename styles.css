@@ -932,7 +932,7 @@ footer a:hover { color: var(--gold); }
     letter-spacing: .28em; text-transform: uppercase; cursor: pointer;
     transition: background .25s ease;
 }
-.cart-checkout:hover { background: #8e6f3d; }
+.cart-checkout:hover { background: var(--ink); }
 .cart-checkout:disabled { background: var(--grey-300); cursor: not-allowed; }
 
 /* ===== EMBEDDED CHECKOUT OVERLAY ===== */

@@ -78,6 +78,13 @@
                     </div>
                 </div>
 
+                <!-- closed-book back cover, shown alone -->
+                <div class="lb-cover-box lb-backcover-box is-hidden" id="lbBackCoverBox">
+                    <img src="CHOC logo white.png" alt="CHOC" />
+                    <p>It&rsquo;s what you want</p>
+                    <div class="lb-site">chocstudio.com</div>
+                </div>
+
             </div>
         </div>
         <span class="lookbook-counter" id="lbCounter">Cover</span>
@@ -149,18 +156,19 @@
         { type: 'look', img: 'Mockups/gym tank top black/womens-micro-rib-tank-top-solid-black-blend-front-6aa566a5a814d.png', num: 'Look 07', name: 'Gym Tank &mdash; Black', coll: 'Gym', pageNum: 13 },
         { type: 'look', img: 'Mockups/crop top black (E)/womens-crop-top-black-front-6aa55dcc9bda5.png', num: 'Look 08', name: 'Embroidered Crop Top &mdash; Black', coll: 'Embroidery', pageNum: 14 }
     ];
-    var BACKCOVER = { type: 'backcover', pageNum: 8 };
+    var BACKCOVER_PAGENUM = 8;
     var BLANK0 = { type: 'blank', pageNum: 0 };
     var BLANK1 = { type: 'blank', pageNum: 1 };
     var BLANK7 = { type: 'blank', pageNum: 7 };
 
-    // Cover is its own single page. Opening it reveals the inside front
-    // cover (page 0) facing a plain Page 1 (also blank), then every turn
-    // after that is a spread of two facing pages: (Drop1, Drop2),
-    // (GymDrop, FWPre-Drop), (FWDrop, plain Page 7) ... ending on the
-    // BackCover standing alone, same as the front cover.
+    // Cover is its own single page, and so is the back cover -- both
+    // render as standalone centered pages, not inside the two-page
+    // spread. Opening the front cover reveals the inside front cover
+    // (page 0) facing a plain Page 1, then every turn after that is a
+    // spread of two facing pages: (Drop1, Drop2), (GymDrop, FWPre-Drop),
+    // (FWDrop, plain Page 7) -- then the BackCover stands alone.
     // LOOKS is kept around unused for when real look photography is ready.
-    var PAGES = [BLANK0, BLANK1].concat(DOCS).concat([BLANK7, BACKCOVER]);
+    var PAGES = [BLANK0, BLANK1].concat(DOCS).concat([BLANK7]);
     var SPREADS = [];
     for (var p = 0; p < PAGES.length; p += 2) {
         SPREADS.push({ left: PAGES[p], right: PAGES[p + 1] });
@@ -170,6 +178,7 @@
     if (!book) return;
 
     var coverBox = document.getElementById('lbCoverBox');
+    var backCoverBox = document.getElementById('lbBackCoverBox');
     var spreadBox = document.getElementById('lbSpread');
     var slotLeft = document.getElementById('lbSlotLeft');
     var slotRight = document.getElementById('lbSlotRight');
@@ -184,7 +193,7 @@
     var nextBtn = document.getElementById('lbNext');
     var counter = document.getElementById('lbCounter');
 
-    var view = 'cover';   // 'cover' | 'spread'
+    var view = 'cover';   // 'cover' | 'spread' | 'backcover'
     var spreadIndex = 0;
     var animating = false;
 
@@ -222,13 +231,16 @@
             counter.textContent = 'Cover';
             prevBtn.disabled = true;
             nextBtn.disabled = false;
+        } else if (view === 'backcover') {
+            counter.textContent = 'Page ' + pad(BACKCOVER_PAGENUM) + ' / ' + pad(BACKCOVER_PAGENUM);
+            prevBtn.disabled = false;
+            nextBtn.disabled = true;
         } else {
             var spread = SPREADS[spreadIndex];
             var rightPage = spread.right || spread.left;
-            var lastPageNum = PAGES[PAGES.length - 1].pageNum;
-            counter.textContent = 'Pages ' + pad(spread.left.pageNum) + '–' + pad(rightPage.pageNum) + ' / ' + pad(lastPageNum);
+            counter.textContent = 'Pages ' + pad(spread.left.pageNum) + '–' + pad(rightPage.pageNum) + ' / ' + pad(BACKCOVER_PAGENUM);
             prevBtn.disabled = false;
-            nextBtn.disabled = spreadIndex === SPREADS.length - 1;
+            nextBtn.disabled = false;
         }
     }
 
@@ -247,9 +259,24 @@
         setTimeout(function () { spreadBox.hidden = true; }, 400);
         refresh();
     }
+    function openBackCover() {
+        view = 'backcover';
+        spreadBox.classList.remove('is-visible');
+        backCoverBox.classList.remove('is-hidden');
+        setTimeout(function () { spreadBox.hidden = true; }, 400);
+        refresh();
+    }
+    function closeBackCover() {
+        view = 'spread';
+        backCoverBox.classList.add('is-hidden');
+        spreadBox.hidden = false;
+        requestAnimationFrame(function () { spreadBox.classList.add('is-visible'); });
+        refresh();
+    }
 
     function turnForward() {
-        if (animating || spreadIndex >= SPREADS.length - 1) return;
+        if (animating) return;
+        if (spreadIndex >= SPREADS.length - 1) { openBackCover(); return; }
         animating = true;
         var next = spreadIndex + 1;
         flipFwdFront.innerHTML = pageHTML(SPREADS[spreadIndex].right);
@@ -275,6 +302,7 @@
 
     function turnBackward() {
         if (animating) return;
+        if (view === 'backcover') { closeBackCover(); return; }
         if (view === 'spread' && spreadIndex === 0) { closeBook(); return; }
         if (view !== 'spread') return;
         animating = true;
@@ -302,7 +330,7 @@
 
     function next() {
         if (view === 'cover') openBook();
-        else turnForward();
+        else if (view === 'spread') turnForward();
     }
     function prev() {
         turnBackward();
@@ -311,6 +339,7 @@
     nextBtn.addEventListener('click', next);
     prevBtn.addEventListener('click', prev);
     coverBox.addEventListener('click', openBook);
+    backCoverBox.addEventListener('click', closeBackCover);
     document.addEventListener('keydown', function (e) {
         if (e.key === 'ArrowRight') next();
         if (e.key === 'ArrowLeft') prev();

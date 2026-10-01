@@ -83,6 +83,18 @@ body::after {
    section the flexible row instead of the book. Give the book that row. */
 .page--lookbook { grid-template-rows: auto auto 1fr auto; }
 
+/* Closed-for-now homepage: blurred product grid sitting behind everything */
+.closed-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    background: url('back soon bg.png') center / cover no-repeat;
+    filter: blur(28px);
+    transform: scale(1.15);
+    opacity: .4;
+    pointer-events: none;
+}
+
 /* ===== SITE HEADER / NAV ===== */
 .top-bar {
     display: flex;

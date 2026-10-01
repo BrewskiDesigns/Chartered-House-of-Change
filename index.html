@@ -30,7 +30,9 @@
 </head>
 <body>
 
-<div class="page">
+<div class="page page--closed">
+
+    <div class="closed-bg"></div>
 
     <!-- ===== HEADER ===== -->
     <div class="top-bar">
@@ -38,17 +40,9 @@
             <a href="index.html" class="brand-mark">
                 <img src="CHOC logo navy.png" alt="Chartered House of Change" />
             </a>
-            <nav class="site-nav">
-                <a href="featured.html">Featured</a>
-                <a href="gym.html">Gym</a>
-                <a href="embroidery.html">Embroidery</a>
-            </nav>
         </div>
         <div class="header-right">
             <span class="est">Est. <span class="gold-text">MMXXVI</span></span>
-            <button class="cart-btn" id="cartOpen" aria-label="Open cart">
-                Cart <span class="cart-count">0</span>
-            </button>
         </div>
     </div>
 
@@ -82,52 +76,6 @@
         </div>
     </footer>
 
-</div>
-
-<!-- ===== IMAGE LIGHTBOX ===== -->
-<div class="lightbox" id="lightbox">
-    <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
-    <img id="lightboxImg" src="" alt="Enlarged product image" />
-</div>
-
-<!-- ===== SIZE PICKER MODAL ===== -->
-<div class="size-overlay" id="sizeOverlay">
-    <div class="size-modal">
-        <button class="close" id="sizeClose" aria-label="Close">&times;</button>
-        <p class="eyebrow">Select</p>
-        <h3 id="sizeProductName">Choose a Size</h3>
-        <p class="prompt">Choose a size</p>
-        <div class="size-grid"></div>
-        <button class="size-confirm" id="sizeConfirm" disabled>Confirm</button>
-    </div>
-</div>
-
-<!-- ===== CART DRAWER ===== -->
-<div class="cart-overlay" id="cartOverlay"></div>
-<aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart">
-    <div class="cart-drawer__head">
-        <h2>Your Cart</h2>
-        <button class="cart-drawer__close" id="cartClose" aria-label="Close cart">&times;</button>
-    </div>
-    <div class="cart-drawer__items" id="cartItems"></div>
-    <div class="cart-drawer__foot">
-        <div class="cart-subtotal">
-            <span>Subtotal</span>
-            <span id="cartSubtotal">£0.00</span>
-        </div>
-        <p class="cart-shipping">Free UK shipping · made to order</p>
-        <button class="cart-checkout" id="cartCheckout" disabled>Checkout</button>
-    </div>
-</aside>
-
-<!-- ===== EMBEDDED CHECKOUT OVERLAY ===== -->
-<div class="co-overlay" id="checkoutOverlay">
-    <div class="co-head">
-        <button class="co-back" id="checkoutClose">&larr; Back to shop</button>
-        <span class="co-title">Checkout</span>
-        <span class="co-spacer"></span>
-    </div>
-    <div id="embedded-checkout"></div>
 </div>
 
 <!-- ===== SIZING MODAL ===== -->
@@ -319,7 +267,6 @@
     </div>
 </div>
 
-<script src="https://js.stripe.com/v3/"></script>
 <script src="site.js"></script>
 </body>
 </html>

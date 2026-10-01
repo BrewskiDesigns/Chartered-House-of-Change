@@ -943,7 +943,7 @@ footer a:hover { color: var(--gold); }
     margin: 0 auto;
 }
 
-/* ---- closed cover: a single page, sits on its own ---- */
+/* ---- closed cover: a single page, sits on its own, full-bleed image ---- */
 .lb-cover-box {
     position: absolute; top: 50%; left: 50%;
     transform: translate(-50%, -50%);
@@ -951,42 +951,15 @@ footer a:hover { color: var(--gold); }
     aspect-ratio: 0.7071;
     z-index: 5;
     cursor: pointer;
-    background: linear-gradient(160deg, #1b1712, #0f0d0a 60%);
+    overflow: hidden;
     box-shadow: 0 40px 60px rgba(0,0,0,.45);
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center; text-align: center;
-    gap: 14px; padding: 10% 8%; color: var(--paper);
     transition: opacity .4s ease, transform .4s ease;
 }
 .lb-cover-box.is-hidden {
     opacity: 0; pointer-events: none;
     transform: translate(-50%, -50%) scale(.94);
 }
-.lb-cover-box img { width: 48%; }
-.lb-cover-box .lb-eyebrow {
-    font-size: 10px; letter-spacing: .3em; text-transform: uppercase; color: var(--gold-light);
-}
-.lb-cover-box h1 {
-    font-family: var(--serif); font-weight: 300;
-    font-size: clamp(18px, 5.5vw, 23px); letter-spacing: .02em; margin: 0;
-}
-.lb-cover-box h1 em { font-style: italic; color: var(--gold-light); }
-.lb-cover-box .lb-rule { width: 30px; height: 1px; background: var(--gold); }
-.lb-cover-box .lb-year {
-    font-family: var(--serif); font-style: italic; color: var(--gold);
-    font-size: 13px; letter-spacing: .1em;
-}
-.lb-cover-box .lb-hint {
-    position: absolute; bottom: 6%; left: 0; right: 0; text-align: center;
-    font-size: 9px; letter-spacing: .2em; text-transform: uppercase; color: #8a8070;
-}
-.lb-backcover-box img { width: 26%; opacity: .9; }
-.lb-backcover-box p {
-    font-family: var(--serif); font-style: italic; font-size: 12px; color: var(--gold-light); margin: 0;
-}
-.lb-backcover-box .lb-site {
-    font-size: 8.5px; letter-spacing: .16em; text-transform: uppercase; color: #736a5b;
-}
+.lb-cover-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 /* ---- open spread: two facing pages ---- */
 .lb-spread {

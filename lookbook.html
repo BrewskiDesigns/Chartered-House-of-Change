@@ -55,12 +55,7 @@
 
                 <!-- closed-book cover, shown alone -->
                 <div class="lb-cover-box" id="lbCoverBox">
-                    <img src="CHOC logo white.png" alt="CHOC" />
-                    <div class="lb-eyebrow">Lookbook</div>
-                    <h1>Chartered House <em>of</em> Change</h1>
-                    <div class="lb-rule"></div>
-                    <div class="lb-year">MMXXVI</div>
-                    <div class="lb-hint">Tap to open</div>
+                    <img src="look book pages/front cover.png" alt="Front Cover" />
                 </div>
 
                 <!-- open double-page spread -->
@@ -80,9 +75,7 @@
 
                 <!-- closed-book back cover, shown alone -->
                 <div class="lb-cover-box lb-backcover-box is-hidden" id="lbBackCoverBox">
-                    <img src="CHOC logo white.png" alt="CHOC" />
-                    <p>It&rsquo;s what you want</p>
-                    <div class="lb-site">chocstudio.com</div>
+                    <img src="look book pages/back cover.png" alt="Back Cover" />
                 </div>
 
             </div>
@@ -157,9 +150,9 @@
         { type: 'look', img: 'Mockups/crop top black (E)/womens-crop-top-black-front-6aa55dcc9bda5.png', num: 'Look 08', name: 'Embroidered Crop Top &mdash; Black', coll: 'Embroidery', pageNum: 14 }
     ];
     var BACKCOVER_PAGENUM = 8;
-    var BLANK0 = { type: 'blank', pageNum: 0 };
+    var PG0 = { type: 'doc', img: 'look book pages/pg0.png', alt: 'Inside Front Cover', pageNum: 0, noOverlay: true };
     var BLANK1 = { type: 'blank', pageNum: 1 };
-    var BLANK7 = { type: 'blank', pageNum: 7 };
+    var PG7 = { type: 'doc', img: 'look book pages/pg7.png', alt: 'Page 7', pageNum: 7, noOverlay: true };
 
     // Cover is its own single page, and so is the back cover -- both
     // render as standalone centered pages, not inside the two-page
@@ -168,7 +161,7 @@
     // spread of two facing pages: (Drop1, Drop2), (GymDrop, FWPre-Drop),
     // (FWDrop, plain Page 7) -- then the BackCover stands alone.
     // LOOKS is kept around unused for when real look photography is ready.
-    var PAGES = [BLANK0, BLANK1].concat(DOCS).concat([BLANK7]);
+    var PAGES = [PG0, BLANK1].concat(DOCS).concat([PG7]);
     var SPREADS = [];
     for (var p = 0; p < PAGES.length; p += 2) {
         SPREADS.push({ left: PAGES[p], right: PAGES[p + 1] });
@@ -202,7 +195,8 @@
             return '<div class="lb-paper lb-blank"></div>';
         }
         if (page.type === 'doc') {
-            return '<div class="lb-paper lb-doc"><img src="' + page.img + '" alt="' + page.alt + '" /><div class="lb-overlay"></div></div>';
+            var overlay = page.noOverlay ? '' : '<div class="lb-overlay"></div>';
+            return '<div class="lb-paper lb-doc"><img src="' + page.img + '" alt="' + page.alt + '" />' + overlay + '</div>';
         }
         if (page.type === 'look') {
             return '<div class="lb-paper lb-page">' +

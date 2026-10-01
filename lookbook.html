@@ -149,16 +149,18 @@
         { type: 'look', img: 'Mockups/gym tank top black/womens-micro-rib-tank-top-solid-black-blend-front-6aa566a5a814d.png', num: 'Look 07', name: 'Gym Tank &mdash; Black', coll: 'Gym', pageNum: 13 },
         { type: 'look', img: 'Mockups/crop top black (E)/womens-crop-top-black-front-6aa55dcc9bda5.png', num: 'Look 08', name: 'Embroidered Crop Top &mdash; Black', coll: 'Embroidery', pageNum: 14 }
     ];
-    var BACKCOVER = { type: 'backcover', pageNum: 15 };
+    var BACKCOVER = { type: 'backcover', pageNum: 8 };
     var BLANK0 = { type: 'blank', pageNum: 0 };
     var BLANK1 = { type: 'blank', pageNum: 1 };
+    var BLANK7 = { type: 'blank', pageNum: 7 };
 
     // Cover is its own single page. Opening it reveals the inside front
     // cover (page 0) facing a plain Page 1 (also blank), then every turn
     // after that is a spread of two facing pages: (Drop1, Drop2),
-    // (GymDrop, FWPre-Drop), (FWDrop, Look01) ... ending on (Look08,
-    // BackCover).
-    var PAGES = [BLANK0, BLANK1].concat(DOCS).concat(LOOKS).concat([BACKCOVER]);
+    // (GymDrop, FWPre-Drop), (FWDrop, plain Page 7) ... ending on the
+    // BackCover standing alone, same as the front cover.
+    // LOOKS is kept around unused for when real look photography is ready.
+    var PAGES = [BLANK0, BLANK1].concat(DOCS).concat([BLANK7, BACKCOVER]);
     var SPREADS = [];
     for (var p = 0; p < PAGES.length; p += 2) {
         SPREADS.push({ left: PAGES[p], right: PAGES[p + 1] });

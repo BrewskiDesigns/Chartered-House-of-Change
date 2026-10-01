@@ -147,13 +147,11 @@
         { type: 'look', img: 'Mockups/crop top black (E)/womens-crop-top-black-front-6aa55dcc9bda5.png', num: 'Look 08', name: 'Embroidered Crop Top &mdash; Black', coll: 'Embroidery' }
     ];
     var BACKCOVER = { type: 'backcover' };
-    var BLANK = { type: 'blank' };
 
-    // Cover is its own single page. Opening it reveals a blank inside
-    // cover on the left with the Introduction alone on the right, then
-    // every turn after that is a real spread of two facing pages:
-    // (Idea, Drop1), (Look01, Look02) ... ending on (Look08, BackCover).
-    var PAGES = [BLANK].concat(DOCS).concat(LOOKS).concat([BACKCOVER]);
+    // Cover is its own single page. Opening it goes straight into spreads
+    // of two facing pages: (Drop1, Drop2), (GymDrop, FWPre-Drop),
+    // (FWDrop, Look01) ... ending on (Look08, BackCover).
+    var PAGES = DOCS.concat(LOOKS).concat([BACKCOVER]);
     var SPREADS = [];
     for (var p = 0; p < PAGES.length; p += 2) {
         SPREADS.push({ left: PAGES[p], right: PAGES[p + 1] });

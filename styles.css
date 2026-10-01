@@ -88,9 +88,9 @@ body::after {
     position: fixed;
     inset: 0;
     z-index: 0;
-    background: url('back soon bg.png') center / contain no-repeat;
+    background: url('back soon bg.png') center / cover no-repeat;
     filter: blur(7px);
-    transform: scale(1.02);
+    transform: scale(1.15);
     opacity: .4;
     pointer-events: none;
 }

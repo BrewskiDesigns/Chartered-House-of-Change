@@ -161,6 +161,23 @@ body::after {
     white-space: nowrap;
 }
 
+.corner-socials {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+.corner-socials a {
+    font-size: 10.5px;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    color: var(--grey-500);
+    font-weight: 500;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color .25s var(--ease);
+}
+.corner-socials a:hover { color: var(--gold); }
+
 .cart-btn {
     background: none;
     border: 0;

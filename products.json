@@ -8,54 +8,101 @@
     "2XL"
   ],
   "products": {
-    "lake-como-hoodie": {
-      "name": "Lake Como Hoodie",
-      "price": 5000,
-      "image": "Mockups/Lake Como/unisex-essential-eco-cruiser-2.0-hoodie-black-back-6aa55cf1d2182.png",
-      "description": "Featured — Lake Como Hoodie",
-      "_hero": "back"
+    "change-tee-black": {
+      "name": "Change Tee — Black",
+      "price": 2000,
+      "image": "mockups 2/change tee black/unisex-classic-tee-black-front-6abba68665146.png",
+      "description": "Change Tee — Black"
     },
-    "st-tropez-hoodie": {
-      "name": "St. Tropez Hoodie",
-      "price": 5000,
-      "image": "Mockups/St. Tropez/unisex-essential-eco-cruiser-2.0-hoodie-black-back-6aa55d33953aa.png",
-      "description": "Featured — St. Tropez Hoodie",
-      "_hero": "back"
+    "change-tee-white": {
+      "name": "Change Tee — White",
+      "price": 2000,
+      "image": "mockups 2/change tee white/unisex-classic-tee-white-front-6abba64a09f55.png",
+      "description": "Change Tee — White"
+    },
+    "classic-tee-black": {
+      "name": "Classic Tee — Black",
+      "price": 2000,
+      "image": "mockups 2/classic tee black/unisex-classic-tee-black-front-6abb9bbd7a3cb.png",
+      "description": "Classic Tee — Black"
+    },
+    "classic-tee-navy": {
+      "name": "Classic Tee — Navy",
+      "price": 2000,
+      "image": "mockups 2/classic tee navy/unisex-classic-tee-navy-front-6abb9be9dbbf9.png",
+      "description": "Classic Tee — Navy"
+    },
+    "classic-tee-white": {
+      "name": "Classic Tee — White",
+      "price": 2000,
+      "image": "mockups 2/classic tee white/unisex-classic-tee-white-front-6abb9b658f5dc.png",
+      "description": "Classic Tee — White"
+    },
+    "poker-chip-tee-black": {
+      "name": "Poker Chip Tee — Black",
+      "price": 2000,
+      "image": "mockups 2/poker chip tee black/unisex-classic-tee-black-front-6abba19ef0c0b.png",
+      "description": "Poker Chip Tee — Black"
+    },
+    "poker-chip-tee-navy": {
+      "name": "Poker Chip Tee — Navy",
+      "price": 2000,
+      "image": "mockups 2/poker chip tee navy/unisex-classic-tee-navy-front-6abba1cedd1ed.png",
+      "description": "Poker Chip Tee — Navy"
+    },
+    "poker-chip-tee-white": {
+      "name": "Poker Chip Tee — White",
+      "price": 2000,
+      "image": "mockups 2/poker chip tee white/unisex-classic-tee-white-front-6abba168746b9.png",
+      "description": "Poker Chip Tee — White"
+    },
+    "wax-seal-tee-black": {
+      "name": "Wax Seal Tee — Black",
+      "price": 2000,
+      "image": "mockups 2/wax seal tee black/unisex-classic-tee-black-front-6abba0ee676e2.png",
+      "description": "Wax Seal Tee — Black"
+    },
+    "wax-seal-tee-white": {
+      "name": "Wax Seal Tee — White",
+      "price": 2000,
+      "image": "mockups 2/wax seal tee white/unisex-classic-tee-white-front-6abba0b7a9689.png",
+      "description": "Wax Seal Tee — White"
+    },
+    "wax-seal-tee-navy": {
+      "name": "Wax Seal Tee — Navy",
+      "price": 2000,
+      "image": "mockups 2/wax teal tee navy/unisex-classic-tee-navy-front-6abba121a202c.png",
+      "description": "Wax Seal Tee — Navy"
     },
     "stars-tee-black": {
       "name": "Stars Tee — Black",
       "price": 2000,
-      "image": "Mockups/stars black/unisex-classic-tee-black-front-6aa55e1cf021e.png",
-      "description": "Featured — Stars Tee (Black)",
-      "_hero": "front"
+      "image": "mockups 2/stars tee black/unisex-classic-tee-black-front-6abb9d6b61fdc.png",
+      "description": "Stars Tee — Black"
     },
-    "stars-tee-white": {
-      "name": "Stars Tee — White",
+    "stars-tee-blue": {
+      "name": "Stars Tee — Blue",
       "price": 2000,
-      "image": "Mockups/stars white/unisex-classic-tee-white-front-6aa55e4359918.png",
-      "description": "Featured — Stars Tee (White)",
-      "_hero": "front"
+      "image": "mockups 2/stars tee blue/unisex-classic-tee-sky-front-6abb9dc00df74.png",
+      "description": "Stars Tee — Blue"
     },
     "stars-tee-pink": {
       "name": "Stars Tee — Pink",
       "price": 2000,
-      "image": "Mockups/stars pink /unisex-classic-tee-azalea-front-6aa55eb397635.png",
-      "description": "Featured — Stars Tee (Pink)",
-      "_hero": "front"
+      "image": "mockups 2/stars tee pink/unisex-classic-tee-azalea-front-6abb9e17bf8ee.png",
+      "description": "Stars Tee — Pink"
     },
-    "stars-tee-sky-blue": {
-      "name": "Stars Tee — Sky Blue",
+    "stars-tee-white": {
+      "name": "Stars Tee — White",
       "price": 2000,
-      "image": "Mockups/stars sky blue/unisex-classic-tee-sky-front-6aa55e761b584.png",
-      "description": "Featured — Stars Tee (Sky Blue)",
-      "_hero": "front"
+      "image": "mockups 2/stars tee white/unisex-classic-tee-white-front-6abb9d40e5ee4.png",
+      "description": "Stars Tee — White"
     },
-    "stars-crop-top-black": {
-      "name": "Stars Crop Top — Black",
+    "classic-crop-black": {
+      "name": "Classic Crop — Black",
       "price": 2500,
-      "image": "Mockups/stars crop top black/womens-crop-top-black-front-6aa560c71939b.png",
-      "description": "Featured — Stars Crop Top (Black)",
-      "_hero": "front",
+      "image": "mockups 2/classic crop black/womens-crop-top-black-front-6abb9d0857354.png",
+      "description": "Classic Crop — Black",
       "sizes": [
         "XS",
         "S",
@@ -64,12 +111,11 @@
         "XL"
       ]
     },
-    "stars-crop-top-white": {
-      "name": "Stars Crop Top — White",
+    "classic-crop-white": {
+      "name": "Classic Crop — White",
       "price": 2500,
-      "image": "Mockups/stars crop top white/womens-crop-top-white-front-6aa55efc374dd.png",
-      "description": "Featured — Stars Crop Top (White)",
-      "_hero": "front",
+      "image": "mockups 2/classic crop white/womens-crop-top-white-front-6abb9ce189582.png",
+      "description": "Classic Crop — White",
       "sizes": [
         "XS",
         "S",
@@ -78,12 +124,11 @@
         "XL"
       ]
     },
-    "stars-crop-top-light-pink": {
-      "name": "Stars Crop Top — Light Pink",
+    "stars-crop-baby-pink": {
+      "name": "Stars Crop — Baby Pink",
       "price": 2500,
-      "image": "Mockups/stars crop top light pink/womens-crop-top-bubblegum-front-6aa56112c1eeb.png",
-      "description": "Featured — Stars Crop Top (Light Pink)",
-      "_hero": "front",
+      "image": "mockups 2/stars crop baby pink/womens-crop-top-bubblegum-front-6abb9eb9ca4f3.png",
+      "description": "Stars Crop — Baby Pink",
       "sizes": [
         "XS",
         "S",
@@ -92,90 +137,115 @@
         "XL"
       ]
     },
-    "wax-tee-black": {
-      "name": "Wax Seal Tee — Black",
-      "price": 2000,
-      "image": "Mockups/wax black/unisex-classic-tee-black-front-6aa55c7326b20.png",
-      "description": "Featured — Wax Seal Tee (Black)",
-      "_hero": "front"
+    "stars-crop-black": {
+      "name": "Stars Crop — Black",
+      "price": 2500,
+      "image": "mockups 2/stars crop black/womens-crop-top-black-front-6abb9e7d29707.png",
+      "description": "Stars Crop — Black",
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ]
     },
-    "wax-tee-navy": {
-      "name": "Wax Seal Tee — Navy",
-      "price": 2000,
-      "image": "Mockups/wax navy/unisex-classic-tee-navy-front-6aa55c519cf6e.png",
-      "description": "Featured — Wax Seal Tee (Navy)",
-      "_hero": "front"
+    "stars-crop-white": {
+      "name": "Stars Crop — White",
+      "price": 2500,
+      "image": "mockups 2/stars crop white/womens-crop-top-white-front-6abb9e51af7a0.png",
+      "description": "Stars Crop — White",
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ]
     },
-    "wax-tee-white": {
-      "name": "Wax Seal Tee — White",
-      "price": 2000,
-      "image": "Mockups/wax white/unisex-classic-tee-white-front-6aa55cbc2fab3.png",
-      "description": "Featured — Wax Seal Tee (White)",
-      "_hero": "front"
+    "classic-rib-black": {
+      "name": "Classic Rib — Black",
+      "price": 2500,
+      "image": "mockups 2/classic rib black/womens-micro-rib-tank-top-solid-black-blend-front-6abb9c48aae07.png",
+      "description": "Classic Rib — Black",
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "2XL"
+      ]
     },
-    "gym-sweatshirt-black": {
-      "name": "Gym Sweatshirt — Black",
+    "classic-rib-navy": {
+      "name": "Classic Rib — Navy",
+      "price": 2500,
+      "image": "mockups 2/classic rib navy/womens-micro-rib-tank-top-solid-navy-blend-front-6abb9c9374a10.png",
+      "description": "Classic Rib — Navy",
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "2XL"
+      ]
+    },
+    "classic-rib-white": {
+      "name": "Classic Rib — White",
+      "price": 2500,
+      "image": "mockups 2/classic rib white/womens-micro-rib-tank-top-solid-white-blend-front-6abb9c287e8ca.png",
+      "description": "Classic Rib — White",
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "2XL"
+      ]
+    },
+    "quarter-zip-black": {
+      "name": "Quarter Zip — Black",
       "price": 4000,
-      "image": "Mockups/gym sweat black/unisex-premium-sweatshirt-black-front-6aa565f77dd9b.png",
-      "description": "The Gym Collection — Sweatshirt (Black)",
-      "_hero": "front",
-      "sizes": [
-        "S",
-        "M",
-        "L",
-        "XL",
-        "2XL"
-      ]
+      "image": "mockups 2/quarter zip black/unisex-premium-quarter-zip-sweatshirt-black-front-6abba3ea2cefb.png",
+      "description": "Quarter Zip — Black"
     },
-    "gym-sweatshirt-navy": {
-      "name": "Gym Sweatshirt — Navy",
+    "quarter-zip-heather-grey": {
+      "name": "Quarter Zip — Heather Grey",
       "price": 4000,
-      "image": "Mockups/gym sweat navy/unisex-premium-sweatshirt-navy-blazer-front-6aa56630b324b.png",
-      "description": "The Gym Collection — Sweatshirt (Navy)",
-      "_hero": "front",
-      "sizes": [
-        "S",
-        "M",
-        "L",
-        "XL",
-        "2XL"
-      ]
+      "image": "mockups 2/quarter zip heather grey/unisex-premium-quarter-zip-sweatshirt-heather-grey-front-6abba3c1f3de4.png",
+      "description": "Quarter Zip — Heather Grey"
     },
-    "gym-sweatshirt-white": {
-      "name": "Gym Sweatshirt — White",
+    "quarter-zip-navy": {
+      "name": "Quarter Zip — Navy",
       "price": 4000,
-      "image": "Mockups/gym sweat white/unisex-premium-sweatshirt-white-front-6aa56663b9a01.png",
-      "description": "The Gym Collection — Sweatshirt (White)",
-      "_hero": "front",
-      "sizes": [
-        "S",
-        "M",
-        "L",
-        "XL",
-        "2XL"
-      ]
+      "image": "mockups 2/quarter zip navy/unisex-premium-quarter-zip-sweatshirt-navy-front-6abba41273a37.png",
+      "description": "Quarter Zip — Navy"
     },
-    "gym-tank-black": {
-      "name": "Gym Tank — Black",
-      "price": 3500,
-      "image": "Mockups/gym tank top black/womens-micro-rib-tank-top-solid-black-blend-front-6aa566a5a814d.png",
-      "description": "The Gym Collection — Tank (Black)",
-      "_hero": "front",
-      "sizes": [
-        "XS",
-        "S",
-        "M",
-        "L",
-        "XL",
-        "2XL"
-      ]
+    "washed-sweatshirt-black": {
+      "name": "Washed Sweatshirt — Black",
+      "price": 4000,
+      "image": "mockups 2/washed sweatshirt black/unisex-vintage-garment-dyed-easer-sweatshirt-g.-dyed-black-rock-front-6abba2970beff.png",
+      "description": "Washed Sweatshirt — Black"
     },
-    "gym-tank-navy": {
-      "name": "Gym Tank — Navy",
-      "price": 3500,
-      "image": "Mockups/gym tank top navy/womens-micro-rib-tank-top-solid-navy-blend-front-6aa566cd32aed.png",
-      "description": "The Gym Collection — Tank (Navy)",
-      "_hero": "front",
+    "washed-sweatshirt-blue": {
+      "name": "Washed Sweatshirt — Blue",
+      "price": 4000,
+      "image": "mockups 2/washed sweatshirt blue/unisex-vintage-garment-dyed-easer-sweatshirt-g.-dyed-blue-grey-front-6abba2970bf5b.png",
+      "description": "Washed Sweatshirt — Blue"
+    },
+    "washed-sweatshirt-pink": {
+      "name": "Washed Sweatshirt — Pink",
+      "price": 4000,
+      "image": "mockups 2/washed sweatshirt pink/unisex-vintage-garment-dyed-easer-sweatshirt-g.-dyed-blush-front-6abba2970bf87.png",
+      "description": "Washed Sweatshirt — Pink"
+    },
+    "heavyweight-sweatshirt-black": {
+      "name": "Heavyweight Sweatshirt — Black",
+      "price": 5000,
+      "image": "mockups 2/heavyweight sweatshirt black/unisex-former-sculpted-heavyweight-sweatshirt-black-front-6abba50cc6c32.png",
+      "description": "Heavyweight Sweatshirt — Black",
       "sizes": [
         "XS",
         "S",
@@ -185,12 +255,11 @@
         "2XL"
       ]
     },
-    "gym-tank-white": {
-      "name": "Gym Tank — White",
-      "price": 3500,
-      "image": "Mockups/gym tank top white/womens-micro-rib-tank-top-solid-white-blend-front-6aa566f2a68be.png",
-      "description": "The Gym Collection — Tank (White)",
-      "_hero": "front",
+    "zip-up-black": {
+      "name": "Zip Up — Black",
+      "price": 5000,
+      "image": "mockups 2/zip up black/unisex-heavyweight-full-zip-hoodie-black-front-6abba456ed06a.png",
+      "description": "Zip Up — Black",
       "sizes": [
         "XS",
         "S",
@@ -200,12 +269,11 @@
         "2XL"
       ]
     },
-    "gym-vest-black": {
-      "name": "Gym Vest — Black",
-      "price": 3500,
-      "image": "Mockups/gym tee black/unisex-staple-tank-top-black-front-6aa564e7018bc.png",
-      "description": "The Gym Collection — Vest (Black)",
-      "_hero": "front",
+    "zip-up-navy": {
+      "name": "Zip Up — Navy",
+      "price": 5000,
+      "image": "mockups 2/zip up navy/unisex-heavyweight-full-zip-hoodie-navy-front-6abba47e09691.png",
+      "description": "Zip Up — Navy",
       "sizes": [
         "XS",
         "S",
@@ -215,12 +283,29 @@
         "2XL"
       ]
     },
-    "gym-vest-navy": {
-      "name": "Gym Vest — Navy",
-      "price": 3500,
-      "image": "Mockups/gym tee navy/unisex-staple-tank-top-navy-front-6aa5650a18f4c.png",
-      "description": "The Gym Collection — Vest (Navy)",
-      "_hero": "front",
+    "washed-hoodie-black": {
+      "name": "Washed Hoodie — Black",
+      "price": 5000,
+      "image": "mockups 2/washed hoodie black/unisex-garment-dyed-chaser-vintage-hoodie-g.-dyed-black-rock-front-6abba223ee7cf.png",
+      "description": "Washed Hoodie — Black"
+    },
+    "washed-hoodie-blue": {
+      "name": "Washed Hoodie — Blue",
+      "price": 5000,
+      "image": "mockups 2/washed hoodie blue/unisex-garment-dyed-chaser-vintage-hoodie-g.-dyed-blue-grey-front-6abba223eee6d.png",
+      "description": "Washed Hoodie — Blue"
+    },
+    "washed-hoodie-pink": {
+      "name": "Washed Hoodie — Pink",
+      "price": 5000,
+      "image": "mockups 2/washed hoodie pink/unisex-garment-dyed-chaser-vintage-hoodie-g.-dyed-blush-front-6abba223eeec3.png",
+      "description": "Washed Hoodie — Pink"
+    },
+    "heavyweight-hoodie-black": {
+      "name": "Heavyweight Hoodie — Black",
+      "price": 6000,
+      "image": "mockups 2/heavyweight hoodie black/unisex-sculpted-heavyweight-hoodie-black-front-6abba5f0c66cf.png",
+      "description": "Heavyweight Hoodie — Black",
       "sizes": [
         "XS",
         "S",
@@ -228,115 +313,6 @@
         "L",
         "XL",
         "2XL"
-      ]
-    },
-    "gym-vest-white": {
-      "name": "Gym Vest — White",
-      "price": 3500,
-      "image": "Mockups/gym tee white/unisex-staple-tank-top-white-front-6aa5646a44dae.png",
-      "description": "The Gym Collection — Vest (White)",
-      "_hero": "front",
-      "sizes": [
-        "XS",
-        "S",
-        "M",
-        "L",
-        "XL",
-        "2XL"
-      ]
-    },
-    "embroidered-tee-black": {
-      "name": "Embroidered Tee — Black",
-      "price": 2000,
-      "image": "Mockups/tee black (E)/unisex-classic-tee-black-front-6a5bac1bd98b2.png",
-      "description": "The Embroidery Collection — Tee (Black)",
-      "_hero": "front"
-    },
-    "embroidered-tee-navy": {
-      "name": "Embroidered Tee — Navy",
-      "price": 2000,
-      "image": "Mockups/tee navy (E)/unisex-classic-tee-navy-front-6a5bac4a3d6ae.png",
-      "description": "The Embroidery Collection — Tee (Navy)",
-      "_hero": "front"
-    },
-    "embroidered-tee-white": {
-      "name": "Embroidered Tee — White",
-      "price": 2000,
-      "image": "Mockups/tee white (E)/unisex-classic-tee-white-front-6a5babdc495ea.png",
-      "description": "The Embroidery Collection — Tee (White)",
-      "_hero": "front"
-    },
-    "embroidered-tank-black": {
-      "name": "Embroidered Tank — Black",
-      "price": 2500,
-      "image": "Mockups/tank top black (E)/womens-micro-rib-tank-top-solid-black-blend-front-6aa97346a8beb.png",
-      "description": "The Embroidery Collection — Tank (Black)",
-      "_hero": "front",
-      "sizes": [
-        "XS",
-        "S",
-        "M",
-        "L",
-        "XL",
-        "2XL"
-      ]
-    },
-    "embroidered-tank-navy": {
-      "name": "Embroidered Tank — Navy",
-      "price": 2500,
-      "image": "Mockups/tank top navy (E)/womens-micro-rib-tank-top-solid-navy-blend-front-6aa9737097179.png",
-      "description": "The Embroidery Collection — Tank (Navy)",
-      "_hero": "front",
-      "sizes": [
-        "XS",
-        "S",
-        "M",
-        "L",
-        "XL",
-        "2XL"
-      ]
-    },
-    "embroidered-tank-white": {
-      "name": "Embroidered Tank — White",
-      "price": 2500,
-      "image": "Mockups/tank top white (E)/womens-micro-rib-tank-top-solid-white-blend-front-6aa972feace87.png",
-      "description": "The Embroidery Collection — Tank (White)",
-      "_hero": "front",
-      "sizes": [
-        "XS",
-        "S",
-        "M",
-        "L",
-        "XL",
-        "2XL"
-      ]
-    },
-    "embroidered-crop-top-black": {
-      "name": "Embroidered Crop Top — Black",
-      "price": 2500,
-      "image": "Mockups/crop top black (E)/womens-crop-top-black-front-6aa55dcc9bda5.png",
-      "description": "The Embroidery Collection — Crop Top (Black)",
-      "_hero": "front",
-      "sizes": [
-        "XS",
-        "S",
-        "M",
-        "L",
-        "XL"
-      ]
-    },
-    "embroidered-crop-top-white": {
-      "name": "Embroidered Crop Top — White",
-      "price": 2500,
-      "image": "Mockups/crop top white (E)/womens-crop-top-white-front-6aa55d83c2d4b.png",
-      "description": "The Embroidery Collection — Crop Top (White)",
-      "_hero": "front",
-      "sizes": [
-        "XS",
-        "S",
-        "M",
-        "L",
-        "XL"
       ]
     }
   }

@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CHOC — Chartered House of Change | It's what you want</title>
-    <meta name="description" content="Chartered House of Change (CHOC) — a UK streetwear house of considered, made-to-order pieces. Featured, Classic, Gym and Embroidery collections. It's what you want." />
+    <meta name="description" content="Chartered House of Change (CHOC) — a UK streetwear house of considered, made-to-order pieces. It's what you want." />
     <link rel="canonical" href="https://chocstudio.com/" />
     <meta name="robots" content="index, follow" />
 
@@ -30,9 +30,7 @@
 </head>
 <body>
 
-<div class="page page--closed">
-
-    <div class="closed-bg"></div>
+<div class="page">
 
     <!-- ===== HEADER ===== -->
     <div class="top-bar">
@@ -40,9 +38,15 @@
             <a href="index.html" class="brand-mark">
                 <img src="CHOC logo navy.png" alt="Chartered House of Change" />
             </a>
+            <nav class="site-nav">
+                <a href="shop.html">Shop</a>
+            </nav>
         </div>
         <div class="header-right">
             <span class="est">Est. <span class="gold-text">MMXXVI</span></span>
+            <button class="cart-btn" id="cartOpen" aria-label="Open cart">
+                Cart <span class="cart-count">0</span>
+            </button>
         </div>
     </div>
 
@@ -56,7 +60,7 @@
             Chartered House <span class="italic">of</span> Change
         </h1>
 
-        <p class="tagline">We'll be back on October the 9th</p>
+        <p class="tagline">It's what you want</p>
 
         <div class="divider">
             <span class="line"></span>
@@ -70,14 +74,75 @@
         </div>
     </main>
 
+    <!-- ===== SHOP CTA ===== -->
+    <div class="collection-tiles">
+        <a href="shop.html" class="tile">
+            <div class="tile-inner">
+                <span class="tile-eyebrow">MMXXVI</span>
+                <span class="tile-name">Shop the Collection</span>
+                <span class="tile-cta">View →</span>
+            </div>
+        </a>
+    </div>
+
     <!-- ===== FOOTER ===== -->
     <footer>
         <span>© MMXXVI CHOC</span>
         <div class="socials">
+            <a href="#" data-info="sizing">Sizing</a>
+            <a href="#" data-info="materials">Materials &amp; Care</a>
             <a href="#" data-info="terms">Terms &amp; Refunds</a>
+            <a href="https://www.instagram.com/charteredhouseofchange/" target="_blank" rel="noopener">Instagram</a>
+            <a href="https://www.tiktok.com/@chocstudio.com?is_from_webapp=1&amp;sender_device=pc" target="_blank" rel="noopener">TikTok</a>
         </div>
     </footer>
 
+</div>
+
+<!-- ===== IMAGE LIGHTBOX ===== -->
+<div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
+    <img id="lightboxImg" src="" alt="Enlarged product image" />
+</div>
+
+<!-- ===== SIZE PICKER MODAL ===== -->
+<div class="size-overlay" id="sizeOverlay">
+    <div class="size-modal">
+        <button class="close" id="sizeClose" aria-label="Close">&times;</button>
+        <p class="eyebrow">Select</p>
+        <h3 id="sizeProductName">Choose a Size</h3>
+        <p class="prompt">Choose a size</p>
+        <div class="size-grid"></div>
+        <button class="size-confirm" id="sizeConfirm" disabled>Confirm</button>
+    </div>
+</div>
+
+<!-- ===== CART DRAWER ===== -->
+<div class="cart-overlay" id="cartOverlay"></div>
+<aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart">
+    <div class="cart-drawer__head">
+        <h2>Your Cart</h2>
+        <button class="cart-drawer__close" id="cartClose" aria-label="Close cart">&times;</button>
+    </div>
+    <div class="cart-drawer__items" id="cartItems"></div>
+    <div class="cart-drawer__foot">
+        <div class="cart-subtotal">
+            <span>Subtotal</span>
+            <span id="cartSubtotal">£0.00</span>
+        </div>
+        <p class="cart-shipping">Free UK shipping · made to order</p>
+        <button class="cart-checkout" id="cartCheckout" disabled>Checkout</button>
+    </div>
+</aside>
+
+<!-- ===== EMBEDDED CHECKOUT OVERLAY ===== -->
+<div class="co-overlay" id="checkoutOverlay">
+    <div class="co-head">
+        <button class="co-back" id="checkoutClose">&larr; Back to shop</button>
+        <span class="co-title">Checkout</span>
+        <span class="co-spacer"></span>
+    </div>
+    <div id="embedded-checkout"></div>
 </div>
 
 <!-- ===== SIZING MODAL ===== -->
@@ -89,6 +154,7 @@
         <p>Most garments are unisex; a few noted below are women's-cut. Measurements are of the garment itself, laid flat. If you're between sizes or prefer a relaxed fit, size up.</p>
 
         <h4>Tees</h4>
+        <p class="size-cap">Change Tee, Classic Tee, Poker Chip Tee, Wax Seal Tee, Stars Tee.</p>
         <table class="size-table">
             <thead><tr><th>Size</th><th>S</th><th>M</th><th>L</th><th>XL</th><th>2XL</th></tr></thead>
             <tbody>
@@ -98,38 +164,8 @@
         </table>
         <p class="size-cap">Chest measured flat, armpit to armpit. Length from shoulder seam to hem.</p>
 
-        <h4>Outreach Hoodies</h4>
-        <table class="size-table">
-            <thead><tr><th>Size</th><th>S</th><th>M</th><th>L</th><th>XL</th><th>2XL</th></tr></thead>
-            <tbody>
-                <tr><td>Chest (in)</td><td>20</td><td>22</td><td>24</td><td>26</td><td>28</td></tr>
-                <tr><td>Length (in)</td><td>27</td><td>28</td><td>29</td><td>30</td><td>31</td></tr>
-            </tbody>
-        </table>
-        <p class="size-cap">Relaxed streetwear fit.</p>
-
-        <h4>Coordinates Hoodies</h4>
-        <div class="note"><strong>Please note:</strong> these hoodies use <strong>EU sizing, which runs smaller</strong> than standard UK/US sizing. We recommend ordering <strong>one size up</strong> from your usual.</div>
-        <table class="size-table">
-            <thead><tr><th>Size</th><th>S</th><th>M</th><th>L</th><th>XL</th><th>2XL</th></tr></thead>
-            <tbody>
-                <tr><td>Chest (in)</td><td>20</td><td>21½</td><td>23</td><td>24½</td><td>26</td></tr>
-                <tr><td>Length (in)</td><td>26½</td><td>27½</td><td>28½</td><td>29½</td><td>30½</td></tr>
-            </tbody>
-        </table>
-        <p class="size-cap">Heavyweight organic cotton, regular fit — EU sizing.</p>
-
-        <h4>Polos</h4>
-        <table class="size-table">
-            <thead><tr><th>Size</th><th>S</th><th>M</th><th>L</th><th>XL</th><th>2XL</th></tr></thead>
-            <tbody>
-                <tr><td>Chest (in)</td><td>19</td><td>20½</td><td>22</td><td>23½</td><td>25</td></tr>
-                <tr><td>Length (in)</td><td>28</td><td>29</td><td>30</td><td>31</td><td>32</td></tr>
-            </tbody>
-        </table>
-        <p class="size-cap">Classic fit with side slits.</p>
-
         <h4>Crop Tops</h4>
+        <p class="size-cap">Classic Crop, Stars Crop.</p>
         <div class="note"><strong>Women's cut.</strong> Sizes run XS–XL — no 2XL available.</div>
         <table class="size-table">
             <thead><tr><th>Size</th><th>XS</th><th>S</th><th>M</th><th>L</th><th>XL</th></tr></thead>
@@ -140,7 +176,7 @@
         </table>
         <p class="size-cap">Cropped length, dropped shoulder.</p>
 
-        <h4>Gym Tank</h4>
+        <h4>Classic Rib</h4>
         <div class="note"><strong>Women's cut.</strong> Micro-rib fabric, fitted through the body.</div>
         <table class="size-table">
             <thead><tr><th>Size</th><th>XS</th><th>S</th><th>M</th><th>L</th><th>XL</th><th>2XL</th></tr></thead>
@@ -151,25 +187,9 @@
         </table>
         <p class="size-cap">Spaghetti strap, fitted through the body.</p>
 
-        <h4>Gym Vest</h4>
-        <table class="size-table">
-            <thead><tr><th>Size</th><th>XS</th><th>S</th><th>M</th><th>L</th><th>XL</th><th>2XL</th></tr></thead>
-            <tbody>
-                <tr><td>Chest (in)</td><td>16¼</td><td>18¼</td><td>20¼</td><td>22¼</td><td>24¼</td><td>26¼</td></tr>
-                <tr><td>Length (in)</td><td>26</td><td>27</td><td>28</td><td>29</td><td>30</td><td>31</td></tr>
-            </tbody>
-        </table>
-        <p class="size-cap">Unisex fit, side-seamed.</p>
-
-        <h4>Gym Sweatshirt</h4>
-        <table class="size-table">
-            <thead><tr><th>Size</th><th>S</th><th>M</th><th>L</th><th>XL</th><th>2XL</th></tr></thead>
-            <tbody>
-                <tr><td>Chest (in)</td><td>20</td><td>21</td><td>23</td><td>25</td><td>26½</td></tr>
-                <tr><td>Length (in)</td><td>27</td><td>28</td><td>29</td><td>30</td><td>31</td></tr>
-            </tbody>
-        </table>
-        <p class="size-cap">Relaxed unisex fit.</p>
+        <h4>Quarter Zip, Zip Up, Heavyweight &amp; Washed Sweats</h4>
+        <div class="note"><strong>Measurements coming soon.</strong> These are new pieces for this drop — true-to-size, relaxed fit. Between sizes? Size down for a closer fit, size up for extra room.</div>
+        <p class="size-cap">Quarter Zip, Zip Up, Heavyweight Hoodie, Heavyweight Sweatshirt, Washed Hoodie, Washed Sweatshirt.</p>
 
         <p class="size-cap" style="margin-top:18px;">Measurements are approximate and may vary by up to 1&quot; due to the made-to-order nature of each garment. Questions about fit? Email <a href="mailto:ethan@chocstudio.com">ethan@chocstudio.com</a>.</p>
     </div>
@@ -181,41 +201,19 @@
         <button class="close" aria-label="Close">&times;</button>
         <p class="eyebrow">Fabric &amp; Care</p>
         <h3>Materials &amp; Care</h3>
-        <p>Every piece is made to order using premium blanks, printed or embroidered and finished individually. Compositions vary slightly by product below.</p>
+        <p>Every piece is made to order using premium blanks, printed or embroidered and finished individually. Compositions vary slightly by product.</p>
 
-        <h4>Tees</h4>
+        <h4>Tees &amp; Crops</h4>
         <ul>
             <li>100% cotton</li>
             <li>Fabric weight: 5.0–5.3 oz/yd² (170–180 g/m²)</li>
             <li>Pre-shrunk jersey knit</li>
             <li>Taped neck and shoulders</li>
-            <li>Double seam at sleeves and bottom hem</li>
         </ul>
         <p class="size-cap">White may appear off-white rather than bright white due to the natural fabric.</p>
 
-        <h4>Outreach Hoodies</h4>
-        <ul>
-            <li>65% ring-spun cotton, 35% polyester · 100% cotton face</li>
-            <li>Fabric weight: 8.5 oz/yd² (288 g/m²)</li>
-            <li>Front pouch pocket · 3-panel hood</li>
-            <li>Matching flat drawstrings</li>
-        </ul>
-
-        <h4>Coordinates Hoodies</h4>
-        <ul>
-            <li>100% organic cotton</li>
-            <li>Fabric weight: 10.32 oz/yd² (350 g/m²) — heavyweight</li>
-            <li>Self-fabric double-layered hood · front pouch pocket</li>
-            <li>GOTS &amp; OCS certified organic · OEKO-TEX® Standard 100 · PETA-Approved Vegan</li>
-        </ul>
-
-        <h4>Polos</h4>
-        <ul>
-            <li>100% combed ring-spun cotton</li>
-            <li>Fabric weight: 6.2 oz/yd² (210 g/m²)</li>
-            <li>Ribbed collar · tone-on-tone 3-button placket</li>
-            <li>Straight hem with side slits</li>
-        </ul>
+        <h4>Quarter Zip, Zip Up, Heavyweight &amp; Washed Sweats</h4>
+        <p class="size-cap">Full fabric breakdowns for these pieces are being finalised and will be added here before they ship.</p>
 
         <h4>Care</h4>
         <ul>
@@ -254,7 +252,7 @@
         <p>This does not affect your statutory rights under UK consumer law.</p>
 
         <h4>Discount Codes</h4>
-        <p>Promotional and friends &amp; family codes are applied at checkout, cannot be exchanged for cash, and may be withdrawn or changed at any time.</p>
+        <p>Promotional codes are applied at checkout, cannot be exchanged for cash, and may be withdrawn or changed at any time.</p>
 
         <h4>Privacy</h4>
         <p>We only collect the information needed to fulfil your order (name, address, email, order details). This is shared with our payment processor (Stripe) and our print &amp; fulfilment partner (Printful) solely to process and deliver your order. We never sell your data. For any privacy request, email <a href="mailto:ethan@chocstudio.com">ethan@chocstudio.com</a>.</p>
@@ -269,6 +267,8 @@
     </div>
 </div>
 
+<script src="https://js.stripe.com/v3/"></script>
 <script src="site.js"></script>
+
 </body>
 </html>
